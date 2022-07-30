@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_not_valid
-  resuce_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   def index
     render json: Recipe.all

@@ -6,7 +6,13 @@ class UsersController < ApplicationController
     render json: User.all
   end
   def show
-    render json: find_user, status: :found
+    #render json: find_user, status: :found
+    user = User.find_by(id: session[:user_id])
+    if user
+      render json: user
+    else
+      render json: { error: "Not authorized" }, status: :unauthorized
+    end
   end
   def update
     user = find_user

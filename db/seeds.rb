@@ -16,35 +16,38 @@ User.create(username: "Captain Jack Sparrow", password_digest: "rum", bio: "Why 
 
 puts "Creating recipes..."
 Recipe.create(
-ingredients: "1 Red Cabbage, 1 Red Onion, 1 Purple Carrot, Vinegar, Oil", instructions: "Grate vegetables and combine in a bowl with the oil and vinegar, and some salt.", 
+ingredients: ["1 Red Cabbage", "1 Red Onion", "1 Purple Carrot", "Vinegar", "Oil"], instructions: ["Grate vegetables and combine in a bowl with the oil and vinegar, and some salt."], 
 genre: "American", 
 time: "20 minutes",
 size: "Serves 6", 
 title: "Cabbage Slaw")
 
 Recipe.create(
-ingredients: "2 lbs Boneless chicken, 1/2 bottle BBQ Sauce, Brioche buns, Smoked cheddar cheese", 
-instructions: "Put chicken in slow cooker on medium heat for 7 hours. Mix with BBQ sauce and serve on brioche buns.", 
+ingredients: ["2 lbs Boneless chicken", "1/2 bottle BBQ Sauce", "Brioche buns", "Smoked cheddar cheese"], 
+instructions: ["Put chicken in slow cooker on medium heat for 7 hours.", "Mix with BBQ sauce and serve on brioche buns."], 
 genre: "American", 
 size:"serves 6", 
 time: "10 minutes prep, 7 hours total", 
 title: "Pulled Chicken Sliders")
+
 Recipe.create(
-ingredients: "2 lbs turkey, 1 cup ricotta cheese, chopped mint, chopped parsley, salt and pepper", 
-instructions: "Mix all ingredients together, and roast golf ball sized balls in oven at 350 degrees for one hour. Mix with tomato sauce and enjoy over pasta.", genre:"Italian", 
+ingredients: ["2 lbs turkey", "1 cup ricotta cheese", "chopped mint", "chopped parsley", "salt and pepper"], 
+instructions: ["Mix all ingredients together.", "Roast golf ball sized balls in oven at 350 degrees for one hour.", "Mix with tomato sauce and enjoy over pasta."], genre:"Italian", 
 time:"30 minutes prep, 1 hour cook time", 
 size: "Serves 10", 
 title: "Turkey Ricotta Meatballs")
+
 Recipe.create(
-ingredients: "Elbow macaroni, cheese, pepper, salt, breadcrumbs",
-instructions: "Cook pasta according to instructions on box. Add grated cheese and top with breadcrumbs. Mix in steamed vegetables for a healthier version. Toast under broiler for 15 minutes.", 
+ingredients: ["Elbow macaroni", "cheese", "salt and pepper", "breadcrumbs"],
+instructions: ["Cook pasta according to instructions on box.", "Add grated cheese and top with breadcrumbs.", "Mix in steamed vegetables for a healthier version.", "Toast under broiler for 15 minutes."], 
 genre:"Weeknight Dinner", 
 time: "45 minutes", 
 size: "serves 4", 
 title: "Weeknight mac and cheese")
+
 Recipe.create(
-ingredients: "Bowtie pasta, cherry tomatoes, olive oil, feta", 
-instructions: "Arrange all ingredients except feta and pasta on a sheet pan. Place block of feta in the center. Roast at 350 degrees for 30 minutes. Meanwhile, cook pasta according to box instructions. Mix together and enjoy.", genre:"Weeknight Dinner", 
+ingredients: ["Bowtie pasta", "cherry tomatoes", "olive oil", "feta"], 
+instructions: ["Arrange all ingredients except feta and pasta on a sheet pan.", "Place block of feta in the center.", "Roast at 350 degrees for 30 minutes.", "Meanwhile, cook pasta according to box instructions.", "Mix together and enjoy."], genre:"Weeknight Dinner", 
 time: "45 minutes", 
 size: "Serves 6", 
 title: "TikTok Pasta")

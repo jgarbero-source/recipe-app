@@ -3,9 +3,14 @@ import Login from './Login.js';
 import Recipe from './Recipe.js';
 import Home from './Home.js';
 import {useEffect, useState} from 'react';
+import { Routes, Route} from "react-router-dom";
+
 
 function App() {
-    // const [user, setUser] = useState(null);
+  // require('react-dom');
+  // window.React2 = require('react');
+  // console.log(window.React1 === window.React2);
+    const [user, setUser] = useState(null);
     useEffect(() => {
         fetch("/me").then((response) => {
           if (response.ok) {
@@ -14,9 +19,39 @@ function App() {
           }
         });
       }, []);
-    return(
-        <div>Hey</div>
-    )
-}
+    // return(
+    //     <div>Hey</div>
+    // )
 
-export default App;
+    function handleLogin(user) {
+      setUser(user);
+      console.log(user)
+    }
+  
+    function handleLogout() {
+      setUser(null);
+      console.log(null)
+    }
+  
+    return (
+      <div className="App">
+        <Header user={"blah"} onLogout={handleLogout} />
+        <Routes>
+          <Route path="/recipes/:id" element={<Recipe />}>
+            <Route
+              exact
+              path="/login"
+              element={<Login onLogin={handleLogin} />}
+            />
+            <Route exact path="/" element={<Home />} />
+          </Route>
+        </Routes>
+      </div>
+    );
+  }
+  
+  export default App;
+  
+// }
+
+// export default App;

@@ -2,25 +2,29 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Recipe from "./Recipe";
 
-function Home() {
+function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
+    console.log("in the useEffect")
     fetch("/recipes")
       .then((r) => r.json())
-      .then(setRecipes);
+      .then((r)=> {
+        setRecipes(r);
+        console.log(r);
+      });
   }, []);
 
   return (
     <main>
       {recipes.map((recipe) => {
         return (
-          <Recipe key={recipe.id}>
+          <Recipe key={recipe.id} recipe = {recipe}>
             <h3>
               <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
             </h3>
             <small>
-              {recipe.genre} - {recipe.size} min read
+              {recipe.genre} - {recipe.size}
             </small>
           </Recipe>
         );
@@ -29,4 +33,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Recipes;

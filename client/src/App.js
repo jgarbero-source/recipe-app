@@ -37,13 +37,12 @@ function App() {
       <div className="App">
         <Header user={"blah"} onLogout={handleLogout} />
         <Routes>
-          <Route path="/recipes/:id" element={<Recipe />}>
-            <Route
-              exact
+          <Route exact path="/" element={<Home />} />
+          <Route
               path="/login"
               element={<Login onLogin={handleLogin} />}
             />
-            <Route exact path="/" element={<Home />} />
+          <Route path="/recipes/:id" element={<Recipe />}>
           </Route>
         </Routes>
       </div>

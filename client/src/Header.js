@@ -10,7 +10,7 @@ function Header({ user, onLogout }) {
   return (
     <header>
       <h1>
-        <Link to="/">Lorem Blogum</Link>
+        <Link to="/">{user ? user.username : "Sign In You Bum"}</Link>
       </h1>
       {user ? (
         <div>

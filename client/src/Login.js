@@ -13,7 +13,7 @@ function Login({ onLogin }) {
       },
       body: JSON.stringify({ 
         username: username,
-        password_digest: password
+        password: password
        }),
     }).then((r) => {
       if (r.ok) {

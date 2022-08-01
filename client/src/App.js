@@ -1,7 +1,7 @@
 import Header from './Header.js';
 import Login from './Login.js';
 import Recipe from './Recipe.js';
-import Home from './Home.js';
+import Recipes from './Recipes.js';
 import {useEffect, useState} from 'react';
 import { Routes, Route} from "react-router-dom";
 import NavBar from './Navbar.js';
@@ -18,7 +18,6 @@ function App() {
           if (response.ok) {
             response.json().then((client) => {
               setUser(client)
-              console.log("we did it!")
               console.log(client)
             }
             );
@@ -27,9 +26,6 @@ function App() {
           }
         });
       }, []);
-    // return(
-    //     <div>Hey</div>
-    // )
 
     function handleLogin(user) {
       setUser(user);
@@ -46,11 +42,12 @@ function App() {
         <Header user={user} onLogout={handleLogout} />
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Recipes />} />
           <Route
               path="/login"
               element={<Login onLogin={handleLogin} />}
             />
+          <Route path = "/recipes" element={<Recipes/>}/>
           <Route path="/recipes/:id" element={<Recipe />}>
           </Route>
         </Routes>

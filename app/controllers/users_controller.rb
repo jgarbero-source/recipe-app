@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def render_not_valid invalid
     render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
   end
-  def find_recipe
+  def find_user
     User.find(params[:id])
   end
 end

@@ -37,7 +37,7 @@ function Recipe() {
     }
   }
 
-  const { ingredients, instructions, genre, time, size } = recipe;
+  const { ingredients, instructions, genre, time, size, title } = recipe;
 
   return (
     <Recipe>

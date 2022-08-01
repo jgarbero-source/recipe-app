@@ -20,7 +20,7 @@ function Home() {
               <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
             </h3>
             <small>
-              {article.genre} - {article.size} min read
+              {recipe.genre} - {recipe.size} min read
             </small>
           </Recipe>
         );

@@ -20,7 +20,8 @@ ingredients: ["1 Red Cabbage", "1 Red Onion", "1 Purple Carrot", "Vinegar", "Oil
 genre: "American", 
 time: "20 minutes",
 size: "Serves 6", 
-title: "Cabbage Slaw")
+title: "Cabbage Slaw",
+image: "https://www.spendwithpennies.com/wp-content/uploads/2020/05/Red-Cabbage-Slaw-SpendWithPennies-3.jpg")
 
 Recipe.create(
 ingredients: ["2 lbs Boneless chicken", "1/2 bottle BBQ Sauce", "Brioche buns", "Smoked cheddar cheese"], 
@@ -28,14 +29,17 @@ instructions: ["Put chicken in slow cooker on medium heat for 7 hours.", "Mix wi
 genre: "American", 
 size:"serves 6", 
 time: "10 minutes prep, 7 hours total", 
-title: "Pulled Chicken Sliders")
+title: "Pulled Chicken Sliders",
+image: "https://www.mynameissnickerdoodle.com/wp-content/uploads/2017/03/Instant-Pot-BBQ-Chicken-Sliders-My-Name-Is-Snickerdoodle-2.jpg")
 
 Recipe.create(
 ingredients: ["2 lbs turkey", "1 cup ricotta cheese", "chopped mint", "chopped parsley", "salt and pepper"], 
 instructions: ["Mix all ingredients together.", "Roast golf ball sized balls in oven at 350 degrees for one hour.", "Mix with tomato sauce and enjoy over pasta."], genre:"Italian", 
 time:"30 minutes prep, 1 hour cook time", 
 size: "Serves 10", 
-title: "Turkey Ricotta Meatballs")
+title: "Turkey Ricotta Meatballs",
+image: "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FEdit%2F2020-06-Small-Victories-Cookbook-Recipes%2F150625_SV_5_MeatPoultry_TurkeyRicottaMeatballs_039"
+)
 
 Recipe.create(
 ingredients: ["Elbow macaroni", "cheese", "salt and pepper", "breadcrumbs"],
@@ -43,14 +47,16 @@ instructions: ["Cook pasta according to instructions on box.", "Add grated chees
 genre:"Weeknight Dinner", 
 time: "45 minutes", 
 size: "serves 4", 
-title: "Weeknight mac and cheese")
+title: "Weeknight mac and cheese"
+image: "https://drivemehungry.com/wp-content/uploads/2019/10/southern-baked-mac-and-cheese-20-768x1024.jpg")
 
 Recipe.create(
 ingredients: ["Bowtie pasta", "cherry tomatoes", "olive oil", "feta"], 
 instructions: ["Arrange all ingredients except feta and pasta on a sheet pan.", "Place block of feta in the center.", "Roast at 350 degrees for 30 minutes.", "Meanwhile, cook pasta according to box instructions.", "Mix together and enjoy."], genre:"Weeknight Dinner", 
 time: "45 minutes", 
 size: "Serves 6", 
-title: "TikTok Pasta")
+title: "TikTok Pasta"
+image: "https://seaofblush.com/wp-content/uploads/feta-pasta.jpg")
 #create recipes
 
 puts "Creating reviews..."

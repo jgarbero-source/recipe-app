@@ -47,7 +47,7 @@ instructions: ["Cook pasta according to instructions on box.", "Add grated chees
 genre:"Weeknight Dinner", 
 time: "45 minutes", 
 size: "serves 4", 
-title: "Weeknight mac and cheese"
+title: "Weeknight mac and cheese",
 image: "https://drivemehungry.com/wp-content/uploads/2019/10/southern-baked-mac-and-cheese-20-768x1024.jpg")
 
 Recipe.create(
@@ -55,7 +55,7 @@ ingredients: ["Bowtie pasta", "cherry tomatoes", "olive oil", "feta"],
 instructions: ["Arrange all ingredients except feta and pasta on a sheet pan.", "Place block of feta in the center.", "Roast at 350 degrees for 30 minutes.", "Meanwhile, cook pasta according to box instructions.", "Mix together and enjoy."], genre:"Weeknight Dinner", 
 time: "45 minutes", 
 size: "Serves 6", 
-title: "TikTok Pasta"
+title: "TikTok Pasta",
 image: "https://seaofblush.com/wp-content/uploads/feta-pasta.jpg")
 #create recipes
 

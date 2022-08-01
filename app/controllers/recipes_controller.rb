@@ -26,13 +26,5 @@ class RecipesController < ApplicationController
   def recipe_params
     params.permit(:title, :ingredients, :instructions, :genre, :time, :size)
   end
-  def render_not_found
-    render json: {error: "Recipe not found."}, status: :not_found
-  end
-  def render_not_valid invalid
-    render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
-  end
-  def find_recipe
-    Recipe.find(params[:id])
-  end
+
 end

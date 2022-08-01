@@ -4,6 +4,8 @@ import Recipe from './Recipe.js';
 import Home from './Home.js';
 import {useEffect, useState} from 'react';
 import { Routes, Route} from "react-router-dom";
+import NavBar from './Navbar.js';
+// import NavBar from "./NavBar.js"
 
 
 function App() {
@@ -14,8 +16,14 @@ function App() {
     useEffect(() => {
         fetch("/me").then((response) => {
           if (response.ok) {
-            response.json().then((user) => setUser(user)
+            response.json().then((client) => {
+              setUser(client)
+              console.log("we did it!")
+              console.log(client)
+            }
             );
+          } else {
+            console.log("We're not rendering nothing pal")
           }
         });
       }, []);
@@ -35,7 +43,8 @@ function App() {
   
     return (
       <div className="App">
-        <Header user={"blah"} onLogout={handleLogout} />
+        <Header user={user} onLogout={handleLogout} />
+        <NavBar />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route

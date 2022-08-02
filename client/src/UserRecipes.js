@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import Recipe from "./Recipe";
 
-function UserRecipes({user}) {
+function UserRecipes({ user }) {
   const [recipes, setRecipes] = useState([]);
-  useEffect(async() => {
+  useEffect(async () => {
     await fetch(`/users/${user.id}`)
       .then((r) => r.json())
-      .then((r)=> {
+      .then((r) => {
         setRecipes(r.recipes);
         console.log(r);
       });
   }, []);
 
   return (
-    <div>  
-    {recipes.map(recipe => 
-    <Recipe key={recipe.id} recipe = {recipe}/>
-  )}
-  </div>
+    <div>
+      {recipes.map((recipe) => (
+        <Recipe key={recipe.id} recipe={recipe} edit = {true}/>
+      ))}
+    </div>
   );
 }
 

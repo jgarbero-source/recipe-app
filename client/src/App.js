@@ -9,6 +9,7 @@ import User from "./User.js";
 import UserEditForm from "./UserEditForm.js";
 import UserRecipes from "./UserRecipes.js";
 import UserRecipeEditForm from "./UserRecipeEditForm.js";
+import SignUp from './Signup.js';
 
 function App() {
   const navigate = useNavigate();
@@ -27,16 +28,38 @@ function App() {
     });
   }, []);
 
-  function handleLogin(user) {
-    setUser(user);
-    console.log(user);
-  }
-
-  function handleLogout() {
-    setUser(null);
-    console.log(null);
-    navigate("/");
-  }
+    function handleLogin(user) {
+      setUser(user);
+      console.log(user)
+    }
+  
+    function handleLogout() {
+      setUser(null);
+      console.log(null)
+      navigate("/");
+    }
+  
+    return (
+      <div className="App">
+        <Header user={user} onLogout={handleLogout} />
+        <NavBar />
+        
+        <Routes>
+          <Route exact path="/" element={<Recipes />} />
+          <Route
+              path="/login"
+              element={<Login onLogin={handleLogin} />}
+            />
+          <Route 
+            path="/signup"
+            element={<SignUp />}
+          />
+          <Route path = "/recipes" element={<Recipes/>}/>
+          <Route path="/recipes/:id" element={<Recipe />}>
+          </Route>
+        </Routes>
+      </div>
+    );
 
   return (
     <div className="App">
@@ -45,6 +68,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Recipes />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/user" element={<User user={user} />} />
         <Route path="/user/edit" element={<UserEditForm user={user} />} />
         <Route path="/user/recipes" element={<UserRecipes user={user} />} />

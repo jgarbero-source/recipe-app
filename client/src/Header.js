@@ -12,6 +12,7 @@ function Header({ user, onLogout }) {
       <h1>
         <Link to="/">{user ? user.username : "Sign In You Bum"}</Link>
       </h1>
+      <Link to="signup">Click here to Signup</Link>
       {user ? (
         <div>
           <p>Welcome, {user.username}!</p>

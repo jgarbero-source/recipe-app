@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-//import { Link } from "react-router-dom";
 import Recipe from "./Recipe";
 
 function Recipes() {
@@ -17,21 +16,10 @@ function Recipes() {
   return (
     <div>  
     {recipes.map(recipe => 
-    <Recipe key={recipe.id} recipe = {recipe}/>
+    <Recipe key={recipe.id} recipe = {recipe} edit={false}/>
   )}
   </div>
   );
 }
 
 export default Recipes;
-
-
-/*<h3>
-              <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
-            </h3>
-            <small>
-              {recipe.genre} - {recipe.size}
-            </small>
-          </Recipe>
-        );
-      })} */

@@ -1,32 +1,32 @@
-import Header from './Header.js';
-import Login from './Login.js';
-import Recipe from './Recipe.js';
-import Recipes from './Recipes.js';
-import {useEffect, useState} from 'react';
-import { Routes, Route, Redirect} from "react-router-dom";
-import NavBar from './Navbar.js';
+import Header from "./Header.js";
+import Login from "./Login.js";
+import Recipe from "./Recipe.js";
+import Recipes from "./Recipes.js";
+import { useEffect, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import NavBar from "./Navbar.js";
+import User from "./User.js";
+import UserEditForm from "./UserEditForm.js";
+import UserRecipes from "./UserRecipes.js";
+import UserRecipeEditForm from "./UserRecipeEditForm.js";
 import SignUp from './Signup.js';
-// import NavBar from "./NavBar.js"
-
 
 function App() {
-  // require('react-dom');
-  // window.React2 = require('react');
-  // console.log(window.React1 === window.React2);
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-        fetch("/me").then((response) => {
-          if (response.ok) {
-            response.json().then((client) => {
-              setUser(client)
-              console.log(client)
-            }
-            );
-          } else {
-            console.log("We're not rendering nothing pal")
-          }
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((client) => {
+          setUser(client);
+          console.log(client);
         });
-      }, []);
+      } else {
+        console.log("We're not rendering nothing pal");
+      }
+    });
+  }, []);
 
     function handleLogin(user) {
       setUser(user);
@@ -36,6 +36,7 @@ function App() {
     function handleLogout() {
       setUser(null);
       console.log(null)
+      navigate("/");
     }
   
     return (
@@ -59,10 +60,31 @@ function App() {
         </Routes>
       </div>
     );
-  }
-  
-  export default App;
-  
+
+  return (
+    <div className="App">
+      <Header user={user} onLogout={handleLogout} />
+      <NavBar user={user} />
+      <Routes>
+        <Route exact path="/" element={<Recipes />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/user" element={<User user={user} />} />
+        <Route path="/user/edit" element={<UserEditForm user={user} />} />
+        <Route path="/user/recipes" element={<UserRecipes user={user} />} />
+        <Route
+          path="user/recipes/edit"
+          element={<UserRecipeEditForm/>}
+        />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipes/:id" element={<Recipe />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+
 // }
 
 // export default App;

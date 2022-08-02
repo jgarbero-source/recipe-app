@@ -11,7 +11,6 @@
 function Recipe({recipe}) {
   //const [{ recipe, error, status }, setState] = useState(initialState);
   //const { id } = useParams();
-
   // useEffect(() => {
   //   setState(initialState);
   //   fetch(`/recipes/${id}`).then((r) => {
@@ -40,9 +39,8 @@ function Recipe({recipe}) {
   //const { ingredients, instructions, genre, time, size, title, image} = recipe;
 
   return (
-    <Recipe>
+    <div>
       <h1>{recipe.title}</h1>
-      <small>
         <p>
           {recipe.ingredients}
         </p>
@@ -58,11 +56,8 @@ function Recipe({recipe}) {
         <p>
           {recipe.size}
         </p>
-        <p>
-          {recipe.image}
-        </p>
-      </small>
-    </Recipe>
+        <img src={recipe.image}/>
+    </div>
   );
 }
 

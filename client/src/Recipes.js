@@ -3,7 +3,7 @@ import Recipe from "./Recipe";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
-
+  
   useEffect(async() => {
     await fetch("/recipes")
       .then((r) => r.json())
@@ -12,11 +12,13 @@ function Recipes() {
         console.log(r);
       });
   }, []);
+  
 
   return (
     <div>  
     {recipes.map(recipe => 
-    <Recipe key={recipe.id} recipe = {recipe} edit={false}/>
+    <Recipe key={recipe.id} recipe = {recipe} reviews={recipe.reviews}
+    edit={false}/>
   )}
   </div>
   );

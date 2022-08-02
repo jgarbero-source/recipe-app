@@ -9,7 +9,8 @@
 // };
 import { Link } from "react-router-dom";
 
-function Recipe({recipe, edit}) {
+
+function Recipe({recipe, edit, reviews}) {
   //const [{ recipe, error, status }, setState] = useState(initialState);
   //const { id } = useParams();
   // useEffect(() => {
@@ -38,7 +39,8 @@ function Recipe({recipe, edit}) {
   // }
 
   //const { ingredients, instructions, genre, time, size, title, image} = recipe;
-
+  
+  
   return (
     <div>
       <div><h1>{recipe.title}</h1>{edit ? <Link to={`user/recipes/edit`} state={{from: "recipe"}} className="button">Edit Recipe</Link>:null}</div>
@@ -58,6 +60,7 @@ function Recipe({recipe, edit}) {
           {recipe.size}
         </p>
         <img src={recipe.image}/>
+        
     </div>
   );
 }

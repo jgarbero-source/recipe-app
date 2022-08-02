@@ -7,8 +7,9 @@
 //   error: null,
 //   status: "pending",
 // };
+import { Link } from "react-router-dom";
 
-function Recipe({recipe}) {
+function Recipe({recipe, edit}) {
   //const [{ recipe, error, status }, setState] = useState(initialState);
   //const { id } = useParams();
   // useEffect(() => {
@@ -40,7 +41,7 @@ function Recipe({recipe}) {
 
   return (
     <div>
-      <h1>{recipe.title}</h1>
+      <div><h1>{recipe.title}</h1>{edit ? <Link to={`user/recipes/edit`} state={{from: "recipe"}} className="button">Edit Recipe</Link>:null}</div>
         <p>
           {recipe.ingredients}
         </p>

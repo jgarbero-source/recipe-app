@@ -9,9 +9,13 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
+  def show
+    render json: find_user
+  end
+
   #me
 
-  def show
+  def me
     render json: @current_user
   end
 
@@ -41,6 +45,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:username, :password, :bio)
+  end
+  def find_user
+    User.find(params[:id])
   end
 
 end

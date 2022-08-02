@@ -4,4 +4,6 @@ class User < ApplicationRecord
     #, through: :reviews
 
     has_secure_password
+
+    validates :password, length: {minimum: 2}
 end

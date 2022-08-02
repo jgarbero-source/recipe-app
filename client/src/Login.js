@@ -6,7 +6,7 @@ function Login({ onLogin }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([])
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,10 +15,10 @@ function Login({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         username: username,
-        password: password
-       }),
+        password: password,
+      }),
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => 

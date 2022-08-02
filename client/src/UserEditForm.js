@@ -46,7 +46,7 @@ function UserEditForm({ user }) {
                 </label>
                     Password:
                 <label>
-                    <input type="number" name="password" placeholder={password} value={formData.password} onChange={handleChange} />
+                    <input type="text" name="password" placeholder={password} value={formData.password} onChange={handleChange} />
                 </label>
                     About Me:
                 <label>

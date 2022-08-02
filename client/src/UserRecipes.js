@@ -3,13 +3,15 @@ import Recipe from "./Recipe";
 
 function UserRecipes({ user }) {
   const [recipes, setRecipes] = useState([]);
-  useEffect(async () => {
-    await fetch(`/users/${user.id}`)
+  useEffect(() => {
+    async function goGetEm(){
+      await fetch(`/users/${user.id}`)
       .then((r) => r.json())
       .then((r) => {
         setRecipes(r.recipes);
         console.log(r);
-      });
+      })}
+      goGetEm();
   }, []);
 
   return (

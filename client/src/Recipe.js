@@ -38,29 +38,30 @@ function Recipe({recipe, edit, reviews}) {
   //   }
   // }
 
-  //const { ingredients, instructions, genre, time, size, title, image} = recipe;
-  
-  
+  const { ingredients, instructions, genre, time, size, title, image} = recipe;
+
   return (
     <div>
-      <div><h1>{recipe.title}</h1>{edit ? <Link to={`user/recipes/edit`} state={{from: "recipe"}} className="button">Edit Recipe</Link>:null}</div>
+      <div><h1>{title}</h1>{edit ? <button type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></button>:null}</div>
         <p>
-          {recipe.ingredients}
+          Cuisine: {genre}
         </p>
         <p>
-          {recipe.instructions}
+          Time Commitment: {time}
         </p>
         <p>
-          {recipe.genre}
+          Serving Size: {size}
         </p>
-        <p>
-          {recipe.time}
-        </p>
-        <p>
-          {recipe.size}
-        </p>
-        <img src={recipe.image}/>
-        
+        <p>Ingredients:</p>
+        <ul>
+          {ingredients.map(ing => <li>{ing}</li>)}
+        </ul>
+        <p>Instructions:</p>
+        <ol>
+          {instructions.map(inst => <li>{inst}</li>)}
+        </ol>
+        <img src={image} alt = "dish"/>
+
     </div>
   );
 }

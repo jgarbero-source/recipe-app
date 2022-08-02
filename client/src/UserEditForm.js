@@ -32,6 +32,10 @@ function UserEditForm({ user }) {
         const { value, name } = e.target
         setFormData({ ...formData, [name]: value })
     }
+    function goBack(e) {
+        e.preventDefault()
+        navigate(`/user`)
+    }
 
     return (
         <div className="card">
@@ -50,6 +54,7 @@ function UserEditForm({ user }) {
                 </label>
                 <button>Save</button>
             </form>
+            <button onClick = {e=>goBack(e)}>Back</button>
         </div>
     )
 }

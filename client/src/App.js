@@ -7,6 +7,7 @@ import { Routes, Route, Redirect} from "react-router-dom";
 import NavBar from './Navbar.js';
 import User from './User.js';
 import UserEditForm from './UserEditForm.js';
+import UserRecipes from './UserRecipes.js';
 
 
 function App() {
@@ -44,16 +45,12 @@ function App() {
         <NavBar user = {user}/>
         <Routes>
           <Route exact path="/" element={<Recipes />} />
-          <Route
-              path="/login"
-              element={<Login onLogin={handleLogin} />}
-            />
-          <Route path = "/user" element = {<User/>}/>
+          <Route path="/login" element={<Login onLogin={handleLogin} />}/>
+          <Route path = "/user" element = {<User user = {user}/>}/>
           <Route path ="/user/edit" element={<UserEditForm user = {user}/>}/>
+          <Route path ="/user/recipes" element={<UserRecipes user = {user}/>}/>
           <Route path = "/recipes" element={<Recipes/>}/>
-          <Route path="/recipes/:id" element={<Recipe />}>
-          
-          </Route>
+          <Route path="/recipes/:id" element={<Recipe />}/>
         </Routes>
       </div>
     );

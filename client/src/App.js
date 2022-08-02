@@ -39,6 +39,11 @@ function App() {
       navigate("/");
     }
 
+    function deleteUser() {
+      setUser(null);
+      navigate("/");
+    }
+
   return (
     <div className="App">
       <Header user={user} onLogout={handleLogout} />
@@ -47,7 +52,7 @@ function App() {
         <Route exact path="/" element={<Recipes />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/user" element={<User user={user} />} />
+        <Route path="/user" element={<User user={user} deleteUser={deleteUser} />} />
         <Route path="/user/edit" element={<UserEditForm user={user} />} />
         <Route path="/user/recipes" element={<UserRecipes user={user} />} />
         <Route

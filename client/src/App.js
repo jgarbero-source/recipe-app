@@ -50,10 +50,7 @@ function App() {
         <Route path="/user" element={<User user={user} />} />
         <Route path="/user/edit" element={<UserEditForm user={user} />} />
         <Route path="/user/recipes" element={<UserRecipes user={user} />} />
-        <Route
-          path="user/recipes/edit"
-          element={<UserRecipeEditForm/>}
-        />
+        <Route path="/user/recipes/:id" element={<UserRecipeEditForm/>}/>
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/:id" element={<Recipe />} />
       </Routes>

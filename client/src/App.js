@@ -2,6 +2,8 @@ import Header from "./Header.js";
 import Login from "./Login.js";
 import Recipe from "./Recipe.js";
 import Recipes from "./Recipes.js";
+import Reviews from "./Reviews.js"
+import Review from "./Review.js"
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import NavBar from "./Navbar.js";
@@ -49,7 +51,7 @@ function App() {
       <Header user={user} onLogout={handleLogout} />
       <NavBar user={user} />
       <Routes>
-        <Route exact path="/" element={<Recipes />} />
+        <Route exact path="/" element={<><Recipes /><Reviews /></>}/>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user" element={<User user={user} deleteUser={deleteUser} />} />

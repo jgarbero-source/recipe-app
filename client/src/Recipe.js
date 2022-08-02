@@ -9,7 +9,8 @@
 // };
 import { Link } from "react-router-dom";
 
-function Recipe({recipe, edit}) {
+
+function Recipe({recipe, edit, reviews}) {
   //const [{ recipe, error, status }, setState] = useState(initialState);
   //const { id } = useParams();
   // useEffect(() => {
@@ -60,6 +61,7 @@ function Recipe({recipe, edit}) {
           {instructions.map(inst => <li>{inst}</li>)}
         </ol>
         <img src={image} alt = "dish"/>
+
     </div>
   );
 }

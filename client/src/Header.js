@@ -10,16 +10,16 @@ function Header({ user, onLogout }) {
   return (
     <header>
       <h1>
-        <Link to="/">{user ? user.username : "Sign In You Bum"}</Link>
+        <Link to="/">{user ? user.username : "Sign In, You Bum"}</Link>
       </h1>
-      <Link to="signup">Click here to Signup</Link>
+      {user ? null: <Link to="signup">Signup</Link>}
       {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-        <Link to="/login">Click Here to Login</Link>
+        <Link to="/login">Login</Link>
       )}
     </header>
   );

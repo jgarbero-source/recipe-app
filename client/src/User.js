@@ -3,15 +3,13 @@ import { useState } from "react";
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button'
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+//import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
 function User( { user, deleteUser } ) {
     const [errors, setErrors] = useState(false)
     const navigate = useNavigate()
     const params = useParams()
-    
-    
 
     function handleDelete() {
         console.log("delete me baby... ;)")
@@ -55,13 +53,3 @@ function User( { user, deleteUser } ) {
 }
 
 export default User;
-
-{/* <Card id="bio-card" >
-<CardContent className="card-content">
-    <Typography className="card-desc" variant="subtitle1">{`Username: ${username}`}</Typography>
-    <Typography className="card-desc" variant="body1" color="text.secondary">{`Bio: ${bio}`}</Typography>
-    <Link to={`/user/edit`} className="button">Edit Profile</Link>
-    <Link to={`/user/recipes`} className="button">My Recipes</Link>
-    <Button onClick={handleDelete}>Delete Profile</Button>
-</CardContent>
-</Card> */}

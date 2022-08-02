@@ -4,14 +4,15 @@ import Recipe from "./Recipe";
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
-  useEffect(async() => {
-    await fetch("/recipes")
+  useEffect(() => {
+    async function goGetEm(){
+      await fetch("/recipes")
       .then((r) => r.json())
       .then((r)=> {
         setRecipes(r);
-        console.log(r);
-      });
-  }, []);
+      })}
+    goGetEm();
+  }, [])
 
   return (
     <div>  

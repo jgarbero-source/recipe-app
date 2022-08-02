@@ -1,34 +1,51 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function RecipeEditForm({ recipe }) {
+function RecipeEditForm() {
   const navigate = useNavigate();
-  const { title, ingredients, instructions, genre, time, size, image } = recipe;
+  const location = useLocation();
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState([])
+  useEffect(()=> {
+    let starterFormData = {
+      "title": location.state.recipe.recipe.title,
+      "ingredients": location.state.recipe.recipe.ingredients,
+      "instructions": location.state.recipe.recipe.instructions,
+      "genre": location.state.recipe.recipe.genre,
+      "time": location.state.recipe.recipe.time,
+      "size": location.state.recipe.recipe.size,
+      "image": location.state.recipe.recipe.image,
+    };
+    console.log(starterFormData)
+    setFormData(starterFormData)
+  }, [])
 
-  let starterFormData = {
-    title: title,
-    ingredients: ingredients,
-    instructions: instructions,
-    genre: genre,
-    time: time,
-    size: size,
-    image: image,
-  };
-  const [formData, setFormData] = useState(starterFormData);
+  const ingredients = location.state.recipe.recipe.ingredients;
+  console.log(formData.ingredients)
+  const instructions = location.state.recipe.recipe.instructions;
+  console.log(formData.instructions)
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/users/${recipe.id}`, {
+    fetch(`/recipes/${location.state.recipe.recipe.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(formData)
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-    navigate(`/`);
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((recipe) => 
+        {
+          console.log(recipe)
+          navigate(`/user/recipes`);
+        })
+      } else {
+        r.json().then(json => setErrors(Object.entries(json.errors)))
+      }
+    });
   }
 
   function handleChange(e) {
@@ -42,78 +59,86 @@ function RecipeEditForm({ recipe }) {
 
   return (
     <div className="card">
+      {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
       <form onSubmit={handleSubmit}>
         <label>
-          title:
+          Title:
           <input
             type="text"
             name="title"
-            placeholder={title}
+            //placeholder={title}
             value={formData.title}
             onChange={handleChange}
           />
         </label>
+        <br/>
         <label>
-          image:
-          <img src={image} />
+          Image:
+          <img src={formData.image} alt ="dishtoedit"/>
           <input
             type="text"
             name="image"
-            placeholder={image}
+            //placeholder={image}
             value={formData.image}
             onChange={handleChange}
           />
         </label>
-        <label>
-          ingredients:
-          <input
+        <br/>
+        
+          Ingredients:
+          {ingredients.map((ingr, index) => <label><input
             type="text"
             name="ingredients"
-            placeholder={ingredients}
-            value={formData.ingredients}
+            placeholder={ingr}
+            value={ingredients[index]}
             onChange={handleChange}
-          />
-        </label>
-        instructions:
-        <label>
-          <input
+          /> </label>
+          )}
+
+        <br/>
+        Instructions:
+        {instructions.map((instr, index) => <label><input
             type="text"
-            name="instruction"
-            placeholder={instructions}
-            value={formData.instructions}
+            name="instructions"
+            placeholder={instr}
+            value={instructions[index]}
             onChange={handleChange}
-          />
-        </label>
-        genre:
+          /> </label>
+          )}
+        <br/>
+        Genre:
         <label>
           <input
             type="text"
             name="genre"
-            placeholder={genre}
+            //placeholder={genre}
             value={formData.genre}
             onChange={handleChange}
           />
         </label>
-        time:
+        <br/>
+        Time:
         <label>
           <input
             type="text"
             name="time"
-            placeholder={time}
+            //placeholder={time}
             value={formData.time}
             onChange={handleChange}
           />
         </label>
-        size:
+        <br/>
+        Size:
         <label>
           <input
             type="text"
             name="size"
-            placeholder={size}
+            //placeholder={size}
             value={formData.size}
             onChange={handleChange}
           />
         </label>
+        <br/>
         <button>Save</button>
       </form>
       <button onClick={(e) => goBack(e)}>Back</button>

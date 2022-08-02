@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-//import { Link } from "react-router-dom";
 import Recipe from "./Recipe";
 
 function Recipes() {
@@ -24,14 +23,3 @@ function Recipes() {
 }
 
 export default Recipes;
-
-
-/*<h3>
-              <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
-            </h3>
-            <small>
-              {recipe.genre} - {recipe.size}
-            </small>
-          </Recipe>
-        );
-      })} */

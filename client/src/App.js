@@ -5,7 +5,8 @@ import Recipes from './Recipes.js';
 import {useEffect, useState} from 'react';
 import { Routes, Route, Redirect} from "react-router-dom";
 import NavBar from './Navbar.js';
-// import NavBar from "./NavBar.js"
+import User from './User.js';
+import UserEditForm from './UserEditForm.js';
 
 
 function App() {
@@ -40,15 +41,18 @@ function App() {
     return (
       <div className="App">
         <Header user={user} onLogout={handleLogout} />
-        <NavBar />
+        <NavBar user = {user}/>
         <Routes>
           <Route exact path="/" element={<Recipes />} />
           <Route
               path="/login"
               element={<Login onLogin={handleLogin} />}
             />
+          <Route path = "/user" element = {<User/>}/>
+          <Route path ="/user/edit" element={<UserEditForm user = {user}/>}/>
           <Route path = "/recipes" element={<Recipes/>}/>
           <Route path="/recipes/:id" element={<Recipe />}>
+          
           </Route>
         </Routes>
       </div>

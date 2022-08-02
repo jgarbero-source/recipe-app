@@ -38,28 +38,6 @@ function App() {
       console.log(null)
       navigate("/");
     }
-  
-    return (
-      <div className="App">
-        <Header user={user} onLogout={handleLogout} />
-        <NavBar />
-        
-        <Routes>
-          <Route exact path="/" element={<Recipes />} />
-          <Route
-              path="/login"
-              element={<Login onLogin={handleLogin} />}
-            />
-          <Route 
-            path="/signup"
-            element={<SignUp />}
-          />
-          <Route path = "/recipes" element={<Recipes/>}/>
-          <Route path="/recipes/:id" element={<Recipe />}>
-          </Route>
-        </Routes>
-      </div>
-    );
 
   return (
     <div className="App">
@@ -84,7 +62,3 @@ function App() {
 }
 
 export default App;
-
-// }
-
-// export default App;

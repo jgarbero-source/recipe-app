@@ -3,8 +3,10 @@ class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   def index
-    render json: Review.all
+    render json: Review.all, status: :ok
   end
+
+
   def show
     render json: find_review, status: :found
   end

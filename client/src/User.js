@@ -39,7 +39,7 @@ function User( { user, deleteUser } ) {
                 <Button onClick={handleDelete}>Delete Profile</Button>
             </CardContent>
     } else {
-        userScreen = <h1>No user is logged in.</h1>
+       userScreen = <h1>No user is logged in.</h1>
     }
 
     return (

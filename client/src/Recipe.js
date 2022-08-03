@@ -8,7 +8,7 @@
 //   status: "pending",
 // };
 import { Link } from "react-router-dom";
-
+import { Box, Card, CardActions, CardContent } from "@mui/material";
 
 function Recipe({recipe, edit, reviews}) {
   //const [{ recipe, error, status }, setState] = useState(initialState);
@@ -40,9 +40,19 @@ function Recipe({recipe, edit, reviews}) {
 
   const { ingredients, instructions, genre, time, size, title, image} = recipe;
 
+  const bull = (
+    <Box
+      component="span"
+      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    >
+      •
+    </Box>
+  );
+
   return (
-    <div>
-      <div><h1>{title}</h1>{edit ? <button type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></button>:null}</div>
+    <Card sx={{ minWidth: 275}} variant="outlined" style={{backgroundColor: "#1b9999", width:"100"}}>
+    <CardContent>
+      <h1>{title}</h1>{edit ? <button type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></button>:null}
         <p>
           Cuisine: {genre}
         </p>
@@ -53,16 +63,20 @@ function Recipe({recipe, edit, reviews}) {
           Serving Size: {size}
         </p>
         <p>Ingredients:</p>
-        <ul>
-          {ingredients.map(ing => <li>{ing}</li>)}
-        </ul>
+        <Box marginLeft={65} marginRight={56}>
+          <ul>
+            {ingredients.map(ing => <li>{ing}</li>)}
+          </ul>
+        </Box>
         <p>Instructions:</p>
-        <ol>
-          {instructions.map(inst => <li>{inst}</li>)}
-        </ol>
+        <Box marginLeft={56} marginRight={56}>
+          <ol>
+            {instructions.map(inst => <li>{inst}</li>)}
+          </ol>
+        </Box>
         <img src={image} alt = "dish"/>
-
-    </div>
+  </CardContent>
+  </Card>
   );
 }
 

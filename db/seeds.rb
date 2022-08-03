@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Creating users..."
-User.create(username: "Kermit", password: "froggy", bio: "I'm green")
+User.create(username: "Kermit", password: "froggy", bio: "I'm green", avatar:"https://www.looper.com/img/gallery/kermit-the-frogs-history-explained/l-intro-1601411424.jpg")
 User.create(username: "Darth Vader", password: "darksideoftheforce", bio: "I'm ur daddy")
 User.create(username: "Cookie Monster", password: "cookie", bio: "COOOOOOOOOKIE")
-User.create(username: "Captain Jack Sparrow", password: "pirate", bio: "Why is the rum gone?")
+User.create(username: "Captain Jack Sparrow", password: "pirate", bio: "Why is the rum gone?", avatar: "https://d.newsweek.com/en/full/2042519/captain-jack-sparrow-run-viral-tiktok.jpg?w=1600&h=1200&q=88&f=600b670045f214f172807b570e075526")
 #create users
 
 
@@ -60,6 +60,7 @@ size: "Serves 6",
 title: "TikTok Pasta",
 image: "https://seaofblush.com/wp-content/uploads/feta-pasta.jpg", user_id: 3)
 #create recipes
+
 
 puts "Creating reviews..."
 Review.create(

@@ -15,7 +15,7 @@ function Recipe({user, recipe, edit}) {
     reviews.forEach((rev)=>{
       sum += rev.rating;
     })
-    return `Average Rating:  ${parseFloat(sum/length)}/5  ---  ${length} Review(s)`
+    return `Average Rating of ${parseFloat(sum/length)}/5, with ${length} Review(s)`
   }
 
   function handleSubmitReview(){

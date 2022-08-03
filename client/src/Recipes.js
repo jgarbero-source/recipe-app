@@ -13,13 +13,13 @@ function Recipes() {
       });
   }, []);
   
-
   return (
     <div>  
     {recipes.map(recipe => 
-    <Recipe key={recipe.id} recipe = {recipe} reviews={recipe.reviews}
-    edit={false}/>
+      <Recipe key={recipe.id} recipe = {recipe} 
+      edit={false}/>
   )}
+  
   </div>
   );
 }

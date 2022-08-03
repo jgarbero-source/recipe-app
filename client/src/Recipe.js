@@ -8,9 +8,10 @@
 //   status: "pending",
 // };
 import { Link } from "react-router-dom";
+import Review from "./Review"
 
 
-function Recipe({recipe, edit, reviews}) {
+function Recipe({recipe, edit }) {
   //const [{ recipe, error, status }, setState] = useState(initialState);
   //const { id } = useParams();
   // useEffect(() => {
@@ -60,6 +61,10 @@ function Recipe({recipe, edit, reviews}) {
           {recipe.size}
         </p>
         <img src={recipe.image}/>
+        
+        {recipe.reviews.map(review => <Review key = {review.id} description = {review.description}/>)}
+        
+        
         
     </div>
   );

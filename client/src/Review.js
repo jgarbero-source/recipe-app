@@ -1,11 +1,8 @@
-function Review({review}) {
-
+function Review({description}) {
   return (
-    <div>
       <p>
-        {review.description}
+        {description}
       </p>
-    </div>
   )
 }
 

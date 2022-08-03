@@ -10,7 +10,7 @@ function Recipes() {
       .then((r) => r.json())
       .then((r)=> {
         setRecipes(r);
-        console.log(r)})}
+      })}
    goGetEm();
   }, [])
   

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function UserEditForm({ user }) {
+function UserEditForm({ user, updateUser }) {
     const [errors, setErrors] = useState([])
     const navigate = useNavigate()
     const { avatar, username, bio, password } = user
@@ -13,7 +13,7 @@ function UserEditForm({ user }) {
         "bio": bio
     }
     const [formData, setFormData] = useState(starterFormData);
-    console.log(starterFormData)
+
     function handleSubmit(e) {
         e.preventDefault()
         console.log(formData)
@@ -25,14 +25,15 @@ function UserEditForm({ user }) {
             },
             body: JSON.stringify(formData)
         })
-        .then((r) => {
-            if (r.ok) {
-              console.log(r.json())  
-              navigate('/')
-          } else {
-            r.json().then(json => setErrors(Object.entries(json.errors)))
-          }
+        .then(res => {
+            if(res.ok){
+                res.json().then(updateUser)
+                navigate('/')
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            }
         })
+        navigate(`/`)
     }
 
     function handleChange(e) {
@@ -63,10 +64,11 @@ function UserEditForm({ user }) {
                 </label>
                     About Me:
                 <label>
-                    <textarea type="text" name="info" placeholder={bio} value={formData.bio} onChange={handleChange} />
+                    <textarea type="text" name="bio" placeholder={bio} value={formData.bio} onChange={handleChange} />
                 </label>
                 <button>Save</button>
             </form>
+            {errors?errors.map(e => <h2 style={{color:'red'}}>{e.toUpperCase()}</h2>):null}
             <button onClick = {e=>goBack(e)}>Back</button>
         </div>
     )

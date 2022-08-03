@@ -39,9 +39,6 @@ function Header({ user, onLogout }) {
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700display=swap"
       />
 
-      <br />
-      {user ? null: <Link to="signup">Signup</Link>}
-
     </header>
   );
 }

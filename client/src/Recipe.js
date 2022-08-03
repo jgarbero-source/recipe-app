@@ -7,15 +7,13 @@ function Recipe({user, recipe, edit}) {
   const [showInfo, setShowInfo] = useState(false)
   const [showReviews, setShowReviews] = useState(false)
   const { ingredients, instructions, genre, time, size, title, image, reviews} = recipe;
-
+  console.log(recipe)
   function averageRating(){
-    if (reviews) {
     let sum = null;
     reviews.forEach((rev)=>{
       sum += rev.rating;
     })
-    return parseFloat(sum/reviews.length)}
-    return "No Reviews"
+    return `Average Rating:  ${parseFloat(sum/reviews.length)}/5  ---  ${reviews.length} Review(s)`
   }
 
   function handleSubmitReview(){
@@ -62,13 +60,13 @@ function Recipe({user, recipe, edit}) {
         </div> : null}
         <img src={image} alt = "dish"/>
         <div>
-        <div>Average Rating: {averageRating()}
-        <br/>
+        <div>{reviews.length>0 ? averageRating(): "No Reviews"}
+        </div><div>
         <button onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</button>
         </div>
         {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} description = {review.description}/>)}</div>
         : null}
-        {!edit ? <button><Link to="/user/recipes/editform">Write a Review</Link></button> : "Login or Create an Account to Post a Review for this Recipe"}
+        {!edit ? <button><Link to="/user/recipes/editform">Write a Review</Link></button> : null}
     </div>
     </div>
   );

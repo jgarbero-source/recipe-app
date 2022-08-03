@@ -6,6 +6,7 @@ function RecipeEditForm() {
   const location = useLocation();
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState([])
+
   useEffect(()=> {
     let starterFormData = {
       "title": location.state.recipe.recipe.title,
@@ -18,7 +19,7 @@ function RecipeEditForm() {
     };
     console.log(starterFormData)
     setFormData(starterFormData)
-  }, [])
+  }, [location.state.recipe.recipe.title, location.state.recipe.recipe.ingredients, location.state.recipe.recipe.instructions, location.state.recipe.recipe.genre, location.state.recipe.recipe.time, location.state.recipe.recipe.size, location.state.recipe.recipe.image])
 
 
   const ingredients = location.state.recipe.recipe.ingredients;
@@ -49,8 +50,8 @@ function RecipeEditForm() {
 
   function readyUpdateRecipe(){
     let toSend = formData
-    //toSend["ingredients"] = toSend.ingredients.split(/\r?\n/)
-    //toSend["instructions"] = toSend.instructions.split(/\r?\n/)
+    //toSend["ingredients"] = toSend.ingredients.split(/[.,]+/)
+    //toSend["instructions"] = toSend.instructions.split(/[.,]+/)
     console.log(toSend)
     return toSend
   }
@@ -118,16 +119,16 @@ function RecipeEditForm() {
         <label>
           <textarea
             name="ingredients"
-            //placeholder={ingredients}
-            value={formData.ingredients}
+            placeholder={ingredients.toString()}
+            value={formData.ingredients.toString()}
             onChange={handleArrayChange}
           /></label>
         <br/>
         Instructions:
         <label><textarea
             name="instructions"
-            //placeholder={ingredients}
-            value={formData.instructions}
+            placeholder={instructions.toString()}
+            value={formData.instructions.toString()}
             onChange={handleArrayChange}
           /></label>
         <br/>

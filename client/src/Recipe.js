@@ -2,7 +2,7 @@ import {useState} from "react";
 import { Link } from "react-router-dom";
 import Review from "./Review"
 
-function Recipe({recipe, edit}) {
+function Recipe({user, recipe, edit}) {
   const [showInfo, setShowInfo] = useState(false)
   const [showReviews, setShowReviews] = useState(false)
   const { ingredients, instructions, genre, time, size, title, image, reviews} = recipe;
@@ -52,7 +52,7 @@ function Recipe({recipe, edit}) {
         </ul>
         <p>Instructions:</p>
         <ol>
-          {instructions.map(inst => <li key ={inst.id}>{inst}</li>)}
+          {instructions.map((inst, index) => <li key ={index}>{inst}</li>)}
         </ol>
         </div> : null}
         <img src={image} alt = "dish"/>
@@ -63,7 +63,8 @@ function Recipe({recipe, edit}) {
         </div>
         {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} description = {review.description}/>)}</div>
         : null}
-        <button><Link to="/user/recipes/editform">Write a Review</Link></button></div>
+        {!edit ? <button><Link to="/user/recipes/editform">Write a Review</Link></button> : "Login or Create an Account to Post a Review for this Recipe"}
+    </div>
     </div>
   );
 }

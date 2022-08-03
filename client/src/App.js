@@ -38,9 +38,9 @@ function App() {
     }
   
     function handleLogout() {
+      navigate("/");
       setUser(null);
       console.log(null)
-      navigate("/");
     }
 
     function deleteUser() {

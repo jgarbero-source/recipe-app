@@ -10,6 +10,7 @@ function Recipes() {
       .then((r) => r.json())
       .then((r)=> {
         setRecipes(r);
+        console.log(r);
       })}
    goGetEm();
   }, [])
@@ -25,15 +26,3 @@ function Recipes() {
 
 export default Recipes;
 
-        // if(homePage){
-        //   setRecipes(shuffle(r))
-        // } else setRecipes(r)
-        // setRecipes(r)
-      // })}
-   // goGetEm();
-  // }, [])
-
-  // function shuffle(r){
-  //   let shuffledR = r.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
-  //   return shuffledR.slice(0,2)
-  // }

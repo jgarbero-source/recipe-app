@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: find_user
+    render json: find_user, include: ['recipes', 'recipes.reviews']
   end
 
   #me
@@ -37,6 +37,8 @@ class UsersController < ApplicationController
 
   def destroy
     user = find_user
+    user.reviews.destroy_all
+    user.recipes.destroy_all
     user.destroy
     head :no_content, status: :ok 
   end

@@ -9,18 +9,19 @@ function Header({ user, onLogout }) {
 
   return (
     <header>
-      <h1>
-        <Link to="/">{user ? user.username : "Sign In You Bum"}</Link>
-      </h1>
-      <Link to="signup">Click here to Signup</Link>
+      <h2>
+        <Link to="/">{user ? user.username : "Sign In, You Bum"}</Link>
+      </h2>
       {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-        <Link to="/login">Click Here to Login</Link>
+        <Link to="/login">Login</Link>
       )}
+      <br />
+      {user ? null: <Link to="signup">Signup</Link>}
     </header>
   );
 }

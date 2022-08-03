@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Creating users..."
-User.create(username: "Kermit", password: "frog", bio: "I'm green")
+User.create(username: "Kermit", password: "froggy", bio: "I'm green")
 User.create(username: "Darth Vader", password: "darksideoftheforce", bio: "I'm ur daddy")
 User.create(username: "Cookie Monster", password: "cookie", bio: "COOOOOOOOOKIE")
-User.create(username: "Captain Jack Sparrow", password: "rum", bio: "Why is the rum gone?")
+User.create(username: "Captain Jack Sparrow", password: "pirate", bio: "Why is the rum gone?")
 #create users
 
 
@@ -65,61 +65,71 @@ puts "Creating reviews..."
 Review.create(
     description: "This dish absolutely changed my life.",
     user_id: 1,
-    recipe_id: 2
+    recipe_id: 2,
+    rating: 5
 )
 
 Review.create(
     description: "My feelings toward this dish are certainly lukewarm.",
     user_id: 2, 
-    recipe_id: 1
+    recipe_id: 1,
+    rating: 3
 )
 
 Review.create(
     description: "This dish tastes like the sunset. Splendid.",
     user_id: 3, 
-    recipe_id: 5
+    recipe_id: 5,
+    rating: 4
 )
 
 Review.create(
     description: "It wasn't bad, but I was disappointed.",
     user_id: 2,
-    recipe_id: 4
+    recipe_id: 4,
+    rating: 2
 )
 
 Review.create(
     description: "If this dish were a color, it would be gray.",
     user_id: 3, 
-    recipe_id: 3
+    recipe_id: 3,
+    rating: 2
 )
 
 Review.create(
     description: "I ate this dish when my ex broke up with me, so I hate it.",
     user_id: 1, 
-    recipe_id: 5
+    recipe_id: 5,
+    rating: 1
 )
 
 Review.create(
     description: "If I could marry this dish, I would.",
     user_id: 2,
-    recipe_id: 1
+    recipe_id: 1,
+    rating: 5
 )
 
 Review.create(
     description: "The dish tasted great but was unpleasant that night. ",
     user_id: 4, 
-    recipe_id: 3
+    recipe_id: 3,
+    rating: 3
 )
 
 Review.create(
     description: "I wish the whole world could try this dish.",
     user_id: 3, 
-    recipe_id: 4
+    recipe_id: 4,
+    rating: 5
 )
 
 Review.create(
     description: "This dish made my depression worse.",
     user_id: 2, 
-    recipe_id: 5
+    recipe_id: 5,
+    rating: 1
 )
 #create reviews
 

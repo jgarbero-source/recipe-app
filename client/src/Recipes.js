@@ -3,9 +3,10 @@ import Recipe from "./Recipe";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
-  
-  useEffect(async() => {
-    await fetch("/recipes")
+
+  useEffect(() => {
+    async function goGetEm(){
+      await fetch("/recipes")
       .then((r) => r.json())
       .then((r)=> {
         setRecipes(r);
@@ -25,3 +26,16 @@ function Recipes() {
 }
 
 export default Recipes;
+
+        // if(homePage){
+        //   setRecipes(shuffle(r))
+        // } else setRecipes(r)
+        // setRecipes(r)
+      // })}
+   // goGetEm();
+  // }, [])
+
+  // function shuffle(r){
+  //   let shuffledR = r.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+  //   return shuffledR.slice(0,2)
+  // }

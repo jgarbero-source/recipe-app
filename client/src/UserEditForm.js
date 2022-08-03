@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 function UserEditForm({ user }) {
 
     const navigate = useNavigate()
-    const { username, password, bio } = user
+    const { avatar, username, password, bio } = user
     let starterFormData = {
+        "avatar": avatar,
         "username": username,
         "password": password,
         "bio": bio
@@ -40,13 +41,18 @@ function UserEditForm({ user }) {
     return (
         <div className="card">
             <form onSubmit={handleSubmit}>
+                <img src={formData.avatar} alt="avatar pic"/>
+                <label>
+                    Avatar:
+                    <input type="text" name="avatar" placeholder={avatar} value={formData.avatar} onChange={handleChange} />
+                </label>
                 <label>
                     Username:
                     <input type="text" name="username" placeholder={username} value={formData.username} onChange={handleChange} />
                 </label>
                     Password:
                 <label>
-                    <input type="number" name="password" placeholder={password} value={formData.password} onChange={handleChange} />
+                    <input type="text" name="password" placeholder={password} value={formData.password} onChange={handleChange} />
                 </label>
                     About Me:
                 <label>

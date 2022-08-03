@@ -13,7 +13,7 @@ function UserRecipes({ user }) {
         console.log(r);
       })}
       goGetEm();
-  }, []);
+  }, [user.id]);
 
   return (
     <div>

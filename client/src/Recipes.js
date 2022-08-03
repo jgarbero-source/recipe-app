@@ -18,9 +18,7 @@ function Recipes() {
     <div>  
     {recipes.map(recipe => 
       <Recipe key={recipe.id} recipe = {recipe} 
-      edit={false}/>
-  )}
-  
+      edit={false} />)}
   </div>
   );
 }

@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 function UserEditForm({ user, updateUser }) {
 
     const navigate = useNavigate()
-    const { avatar, username, password, bio } = user
+    const { avatar, username, password_digest, bio } = user
     let starterFormData = {
         "avatar": avatar,
         "username": username,
-        "password": password,
+        "password": password_digest,
         "bio": bio
     }
     const [formData, setFormData] = useState(starterFormData);
@@ -58,7 +58,7 @@ function UserEditForm({ user, updateUser }) {
                 </label>
                     Password:
                 <label>
-                    <input type="text" name="password" placeholder={password} value={formData.password} onChange={handleChange} />
+                    <input type="text" name="password" placeholder={password_digest} value={formData.password} onChange={handleChange} />
                 </label>
                     About Me:
                 <label>

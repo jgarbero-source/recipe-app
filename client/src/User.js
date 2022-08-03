@@ -69,7 +69,7 @@ function User( { user, deleteUser } ) {
                 }
             </CardContent>
     } else {
-        userScreen = <h1>No user is logged in.</h1>
+       userScreen = <h1>No user is logged in.</h1>
     }
 
     return (

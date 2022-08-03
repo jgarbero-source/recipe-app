@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Typography } from "@mui/material"
 import { useNavigate, Link } from "react-router-dom";
 
 function Login({ onLogin }) {

@@ -1,5 +1,6 @@
 import {useState} from "react";
 import { Link } from "react-router-dom";
+import { Box, Card, CardActions, CardContent } from "@mui/material";
 import Review from "./Review"
 
 function Recipe({user, recipe, edit}) {
@@ -20,14 +21,16 @@ function Recipe({user, recipe, edit}) {
   function handleSubmitReview(){
 
   }
-
+  
   function handleDetails(){
     setShowInfo(!showInfo)
   }
   function handleReviews(){
     setShowReviews(!showReviews)
   }
+
   return (
+  
     <div>
       {edit ? <div>
         <h2>{title}</h2> 
@@ -47,9 +50,11 @@ function Recipe({user, recipe, edit}) {
           Serving Size: {size}
         </p>
         <p>Ingredients:</p>
-        <ul>
-          {ingredients.map(ing => <li>{ing}</li>)}
-        </ul>
+        <Box marginLeft={65} marginRight={56}>
+          <ul>
+            {ingredients.map(ing => <li>{ing}</li>)}
+          </ul>
+        </Box>
         <p>Instructions:</p>
         <ol>
           {instructions.map((inst, index) => <li key ={index}>{inst}</li>)}
@@ -70,3 +75,28 @@ function Recipe({user, recipe, edit}) {
 }
 
 export default Recipe
+
+/* const bull = (
+    <Box
+      component="span"
+      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    >
+      •
+    </Box>
+  );
+
+  return (
+    <Card sx={{ minWidth: 275}} variant="outlined" style={{backgroundColor: "#1b9999", width:"100"}}>
+    <CardContent>
+      <h1>{title}</h1>{edit ? <button type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></button>:null}
+      
+              <Box marginLeft={56} marginRight={56}>
+          <ol>
+            {instructions.map(inst => <li>{inst}</li>)}
+          </ol>
+        </Box>
+        <img src={image} alt = "dish"/>
+  </CardContent>
+  </Card>
+      
+ */

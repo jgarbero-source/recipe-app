@@ -14,6 +14,7 @@ import UserRecipes from "./UserRecipes.js";
 import UserRecipeEditForm from "./UserRecipeEditForm.js";
 import SignUp from './Signup.js';
 import NewRecipeForm from './NewRecipeForm.js';
+import FeaturedRecipe from './FeaturedRecipe.js';
 
 function App() {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ function App() {
         <Route path="/user/edit" element={<UserEditForm user={user} updateUser={updateUser} />} />
         <Route path="/user/recipes" element={<UserRecipes user={user} />} />
         <Route path="/user/recipes/:id" element={<UserRecipeEditForm />}/>
-        <Route path="/recipes" element={<Recipes/>} />
+        <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/new" element={<NewRecipeForm user={user}/>}/>
         <Route path="/recipes/:id" element={<Recipe />} />
         <Route path='/reviews' element={<Reviews />} />

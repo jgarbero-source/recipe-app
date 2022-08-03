@@ -19,6 +19,7 @@ class RecipesController < ApplicationController
   def create
     render json: Recipe.create!(recipe_params), status: :created
   end
+
   def destroy
     recipe = find_recipe
     recipe.reviews.destroy_all
@@ -28,7 +29,7 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.permit(:title, :ingredients, :instructions, :genre, :time, :size, :image)
+    params.permit(:title, :ingredients, :instructions, :genre, :time, :size, :image, :user_id)
   end
   def find_recipe
     Recipe.find(params[:id])

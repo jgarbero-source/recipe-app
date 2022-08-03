@@ -17,7 +17,7 @@ function Login({ onLogin }) {
       },
       body: JSON.stringify({
         username: username,
-        password: password,
+        password: password
       }),
     }).then((r) => {
       if (r.ok) {

@@ -2,6 +2,7 @@ import {useState} from "react";
 import { Link } from "react-router-dom";
 import { Box, Card, CardActions, CardContent } from "@mui/material";
 import Review from "./Review"
+import { Button } from "@mui/material"
 
 function Recipe({user, recipe, edit}) {
   const [showInfo, setShowInfo] = useState(false)
@@ -32,11 +33,15 @@ function Recipe({user, recipe, edit}) {
     <div>
       {edit ? <div>
         <h2>{title}</h2> 
-        <button type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></button>
+        <Button variant="outlined" style={{color:"#000000"}} type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></Button>
         </div>
         :
         <h2>{title}</h2>}
-        <button onClick={handleDetails}>{showInfo ? "Hide Details": "Show Details"}</button>
+        <img src={image} alt = "dish"/>
+        <br>
+          
+        </br>
+        <Button variant="outlined" style={{color:"#000000"}} onClick={handleDetails}>{showInfo ? "Hide Details": "Show Details"}</Button>
         {showInfo ? <div>
         <p>
           Cuisine: {genre}
@@ -58,15 +63,17 @@ function Recipe({user, recipe, edit}) {
           {instructions.map((inst, index) => <li key ={index}>{inst}</li>)}
         </ol>
         </div> : null}
-        <img src={image} alt = "dish"/>
+        {/* <img src={image} alt = "dish"/> */}
         <div>
-        <div>{reviews.length>0 ? averageRating(): "No Reviews"}
-        </div><div>
-        <button onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</button>
-        </div>
+          <div>
+            {reviews.length>0 ? averageRating(): "No Reviews"}
+          </div>
+          <div>
+            <Button variant="outlined" style={{color:"#000000"}} onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</Button>
+          </div>
         {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} description = {review.description}/>)}</div>
         : null}
-        {!edit ? <button><Link to="/user/recipes/editform">Write a Review</Link></button> : null}
+        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/recipes/editform">Write a Review</Link></Button> : null}
     </div>
     </div>
   );

@@ -3,6 +3,6 @@ class Recipe < ApplicationRecord
     belongs_to :user
     #has_many :users, through: :reviews
 
-    validates :size, :time, :ingredients, :instructions, :title, :user_id, presence: true
+    validates :size, :time, :title, :user_id, presence: true
     
 end

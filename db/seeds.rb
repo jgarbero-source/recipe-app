@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Creating users..."
-User.create(username: "Kermit", password: "frog", bio: "I'm green")
+User.create(username: "Kermit", password: "froggy", bio: "I'm green")
 User.create(username: "Darth Vader", password: "darksideoftheforce", bio: "I'm ur daddy")
 User.create(username: "Cookie Monster", password: "cookie", bio: "COOOOOOOOOKIE")
-User.create(username: "Captain Jack Sparrow", password: "rum", bio: "Why is the rum gone?")
+User.create(username: "Captain Jack Sparrow", password: "pirate", bio: "Why is the rum gone?")
 #create users
 
 

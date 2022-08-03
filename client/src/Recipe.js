@@ -8,7 +8,7 @@ function Recipe({recipe, edit}) {
   const { ingredients, instructions, genre, time, size, title, image, reviews} = recipe;
 
   function averageRating(){
-    if (reviews.length > 0) {
+    if (reviews) {
     let sum = null;
     reviews.forEach((rev)=>{
       sum += rev.rating;
@@ -69,4 +69,4 @@ function Recipe({recipe, edit}) {
   );
 }
 
-export default Recipe;
+export default Recipe

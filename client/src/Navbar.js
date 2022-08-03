@@ -36,6 +36,4 @@ function NavBar({user}) {
     )
 }
 
-// {user ? <NavLink className="link" to="/user">User</NavLink> : null}
-
-export default NavBar
+export default NavBar;

@@ -1,24 +1,19 @@
 import { useEffect, useState } from 'react'
-import Review from "./Review"
+
 
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
 
-  useEffect(async() => {
-    await fetch("/reviews")
-    .then((r) => r.json())
-    .then((r)=> {
-      setReviews(r);
-      console.log(r);
-    });
-  }, []);
+  // May not need me :D 
+
+  
 
   return (
     <div>
-    {reviews.map(review => 
+    {/* {reviews.map(review => 
   <Review key={review.id} user_id={review.user_id}review={review} edit={false}/>
-  )}
+  )} */}
     </div>
   )
 

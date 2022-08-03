@@ -2,16 +2,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function UserEditForm({ user }) {
+function UserEditForm({ user, updateUser }) {
 
     const navigate = useNavigate()
-    const { username, password, bio } = user
+    const { avatar, username, password_digest, bio } = user
     let starterFormData = {
+        "avatar": avatar,
         "username": username,
-        "password": password,
+        "password": password_digest,
         "bio": bio
     }
     const [formData, setFormData] = useState(starterFormData);
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -23,8 +25,13 @@ function UserEditForm({ user }) {
             },
             body: JSON.stringify(formData)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then(res => {
+            if(res.ok){
+                res.json().then(updateUser)
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            }
+        })
         navigate(`/`)
     }
 
@@ -40,20 +47,26 @@ function UserEditForm({ user }) {
     return (
         <div className="card">
             <form onSubmit={handleSubmit}>
+                <img src={formData.avatar} alt="avatar pic"/>
+                <label>
+                    Avatar:
+                    <input type="text" name="avatar" placeholder={avatar} value={formData.avatar} onChange={handleChange} />
+                </label>
                 <label>
                     Username:
                     <input type="text" name="username" placeholder={username} value={formData.username} onChange={handleChange} />
                 </label>
                     Password:
                 <label>
-                    <input type="text" name="password" placeholder={password} value={formData.password} onChange={handleChange} />
+                    <input type="text" name="password" placeholder={password_digest} value={formData.password} onChange={handleChange} />
                 </label>
                     About Me:
                 <label>
-                    <textarea type="text" name="info" placeholder={bio} value={formData.bio} onChange={handleChange} />
+                    <textarea type="text" name="bio" placeholder={bio} value={formData.bio} onChange={handleChange} />
                 </label>
                 <button>Save</button>
             </form>
+            {errors?errors.map(e => <h2 style={{color:'red'}}>{e.toUpperCase()}</h2>):null}
             <button onClick = {e=>goBack(e)}>Back</button>
         </div>
     )

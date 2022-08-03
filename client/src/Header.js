@@ -14,12 +14,14 @@ function Header({ user, onLogout }) {
 
   return (
     <header>
+
       <Typography style={{color:"#00adb5"}} variant="h3">
         <Link to="/">{user ? user.username : "Sign In, You Bum"}</Link>
       </Typography>
       {user ? null: <Link to="signup">
       <Button variant="outlined" style={{color:"#000000"}}>Signup</Button>
       </Link>}
+
       {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
@@ -31,10 +33,15 @@ function Header({ user, onLogout }) {
           <Button variant="outlined" style={{color:"#000000"}}>Login</Button>
         </Link>
       )}
+
       <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
+
+      <br />
+      {user ? null: <Link to="signup">Signup</Link>}
+
     </header>
   );
 }

@@ -6,6 +6,7 @@ function RecipeEditForm() {
   const location = useLocation();
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState([])
+
   useEffect(()=> {
     let starterFormData = {
       "title": location.state.recipe.recipe.title,
@@ -14,16 +15,15 @@ function RecipeEditForm() {
       "genre": location.state.recipe.recipe.genre,
       "time": location.state.recipe.recipe.time,
       "size": location.state.recipe.recipe.size,
-      "image": location.state.recipe.recipe.image,
+      "image": location.state.recipe.recipe.image
     };
     console.log(starterFormData)
     setFormData(starterFormData)
-  }, [])
+  }, [location.state.recipe.recipe.title, location.state.recipe.recipe.ingredients, location.state.recipe.recipe.instructions, location.state.recipe.recipe.genre, location.state.recipe.recipe.time, location.state.recipe.recipe.size, location.state.recipe.recipe.image])
+
 
   const ingredients = location.state.recipe.recipe.ingredients;
-  console.log(formData.ingredients)
   const instructions = location.state.recipe.recipe.instructions;
-  console.log(formData.instructions)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -33,7 +33,7 @@ function RecipeEditForm() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(readyUpdateRecipe())
     })
     .then((r) => {
       if (r.ok) {
@@ -48,8 +48,39 @@ function RecipeEditForm() {
     });
   }
 
+  function readyUpdateRecipe(){
+    let toSend = formData
+    //toSend["ingredients"] = toSend.ingredients.split(/[.,]+/)
+    //toSend["instructions"] = toSend.instructions.split(/[.,]+/)
+    console.log(toSend)
+    return toSend
+  }
+
+  function handleDelete(e) {
+    e.preventDefault();
+    fetch(`/recipes/${location.state.recipe.recipe.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      }
+    })
+    .then((r) => {
+      if (r.ok) {
+          navigate(`/user/recipes`);
+      } else {
+        r.json().then(json => setErrors(Object.entries(json.errors)))
+      }
+    });
+  }
+
   function handleChange(e) {
     const { value, name } = e.target;
+    setFormData({ ...formData, [name]: value });
+  }
+  function handleArrayChange(e) {
+    const { value, name } = e.target;
+    console.log(value)
     setFormData({ ...formData, [name]: value });
   }
   function goBack(e) {
@@ -84,29 +115,24 @@ function RecipeEditForm() {
           />
         </label>
         <br/>
-        
           Ingredients:
-          {ingredients.map((ingr, index) => <label><input
-            type="text"
+        <label>
+          <textarea
             name="ingredients"
-            placeholder={ingr}
-            value={ingredients[index]}
-            onChange={handleChange}
-          /> </label>
-          )}
-
+            placeholder={ingredients.toString()}
+            value={formData.ingredients.toString()}
+            onChange={handleArrayChange}
+          /></label>
         <br/>
         Instructions:
-        {instructions.map((instr, index) => <label><input
-            type="text"
+        <label><textarea
             name="instructions"
-            placeholder={instr}
-            value={instructions[index]}
-            onChange={handleChange}
-          /> </label>
-          )}
+            placeholder={instructions.toString()}
+            value={formData.instructions.toString()}
+            onChange={handleArrayChange}
+          /></label>
         <br/>
-        Genre:
+        Quisine:
         <label>
           <input
             type="text"
@@ -142,6 +168,8 @@ function RecipeEditForm() {
         <button>Save</button>
       </form>
       <button onClick={(e) => goBack(e)}>Back</button>
+      <br/>
+      <button onClick={(e)=> handleDelete(e)}>Delete Recipe</button>
     </div>
   );
 }

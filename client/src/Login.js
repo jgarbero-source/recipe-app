@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material"
+import { useNavigate, Link } from "react-router-dom";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -18,7 +18,7 @@ function Login({ onLogin }) {
       },
       body: JSON.stringify({
         username: username,
-        password: password,
+        password: password
       }),
     }).then((r) => {
       if (r.ok) {
@@ -34,6 +34,7 @@ function Login({ onLogin }) {
   }
 
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <h3>Login With Username</h3>
       <label htmlFor="username">Username: </label>
@@ -53,6 +54,9 @@ function Login({ onLogin }) {
       <button type="submit">Login</button>
       {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
     </form>
+    <br />
+    <div>Don't have an account? <Link to="/signup">Sign Up</Link> to get started!</div>
+    </div>
   );
 }
 

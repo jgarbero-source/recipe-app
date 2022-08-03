@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.permit(:title, :ingredients, :instructions, :genre, :time, :size, :image, :user_id)
+    params.permit(:title, :genre, :time, :size, :image, :user_id, ingredients: [], instructions: [])
   end
   def find_recipe
     Recipe.find(params[:id])

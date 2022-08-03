@@ -3,19 +3,20 @@ import { useNavigate } from "react-router-dom";
 
 
 function UserEditForm({ user }) {
-
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate()
-    const { avatar, username, password_digest, bio } = user
+    const { avatar, username, bio, password } = user
     let starterFormData = {
         "avatar": avatar,
         "username": username,
-        "password": password_digest,
+        "password": password,
         "bio": bio
     }
     const [formData, setFormData] = useState(starterFormData);
-
+    console.log(starterFormData)
     function handleSubmit(e) {
         e.preventDefault()
+        console.log(formData)
         fetch(`/users/${user.id}`, {
             method: "PATCH",
             headers: {
@@ -24,9 +25,14 @@ function UserEditForm({ user }) {
             },
             body: JSON.stringify(formData)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        navigate(`/`)
+        .then((r) => {
+            if (r.ok) {
+              console.log(r.json())  
+              navigate('/')
+          } else {
+            r.json().then(json => setErrors(Object.entries(json.errors)))
+          }
+        })
     }
 
     function handleChange(e) {
@@ -40,19 +46,20 @@ function UserEditForm({ user }) {
 
     return (
         <div className="card">
+            {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
             <form onSubmit={handleSubmit}>
-                <img src={formData.avatar} alt="avatar pic"/>
+                { avatar ? <img src={formData.avatar} alt="avatar pic"/> : null}
                 <label>
                     Avatar:
                     <input type="text" name="avatar" placeholder={avatar} value={formData.avatar} onChange={handleChange} />
                 </label>
                 <label>
                     Username:
-                    <input type="text" name="username" placeholder={username} value={formData.username} onChange={handleChange} />
+                    <input type="password" name="username" placeholder={username} value={formData.username} onChange={handleChange} />
                 </label>
                     Password:
                 <label>
-                    <input type="text" name="password" placeholder={password_digest} value={formData.password} onChange={handleChange} />
+                    <input type="password" name="password" placeholder={"Choose a new password carefully..."} value={formData.password} onChange={handleChange} />
                 </label>
                     About Me:
                 <label>

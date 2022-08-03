@@ -10,9 +10,9 @@ function Recipes() {
       .then((r) => r.json())
       .then((r)=> {
         setRecipes(r);
-        console.log(r);
-      });
-  }, []);
+        console.log(r)})}
+   goGetEm();
+  }, [])
   
   return (
     <div>  

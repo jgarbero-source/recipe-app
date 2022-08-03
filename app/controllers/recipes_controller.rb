@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
   end
   def destroy
     recipe = find_recipe
+    recipe.reviews.destroy_all
     recipe.destroy
     head :no_content, status: :ok 
   end

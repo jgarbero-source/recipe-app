@@ -9,10 +9,9 @@ function Header({ user, onLogout }) {
 
   return (
     <header>
-      <h1>
+      <h2>
         <Link to="/">{user ? user.username : "Sign In, You Bum"}</Link>
-      </h1>
-      {user ? null: <Link to="signup">Signup</Link>}
+      </h2>
       {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
@@ -21,6 +20,8 @@ function Header({ user, onLogout }) {
       ) : (
         <Link to="/login">Login</Link>
       )}
+      <br />
+      {user ? null: <Link to="signup">Signup</Link>}
     </header>
   );
 }

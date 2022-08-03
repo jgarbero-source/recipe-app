@@ -47,6 +47,23 @@ function RecipeEditForm() {
       }
     });
   }
+  function handleDelete(e) {
+    e.preventDefault();
+    fetch(`/recipes/${location.state.recipe.recipe.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      }
+    })
+    .then((r) => {
+      if (r.ok) {
+          navigate(`/user/recipes`);
+      } else {
+        r.json().then(json => setErrors(Object.entries(json.errors)))
+      }
+    });
+  }
 
   function handleChange(e) {
     const { value, name } = e.target;
@@ -142,6 +159,8 @@ function RecipeEditForm() {
         <button>Save</button>
       </form>
       <button onClick={(e) => goBack(e)}>Back</button>
+      <br/>
+      <button onClick={(e)=> handleDelete(e)}>Delete Recipe</button>
     </div>
   );
 }

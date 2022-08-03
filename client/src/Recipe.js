@@ -1,6 +1,6 @@
 import {useState} from "react";
 import { Link } from "react-router-dom";
-
+import Review from "./Review"
 
 function Recipe({recipe, edit}) {
   const [showInfo, setShowInfo] = useState(false)
@@ -61,10 +61,9 @@ function Recipe({recipe, edit}) {
         <br/>
         <button onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</button>
         </div>
-        {showReviews ? <div>Reviews Here</div>
+        {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} description = {review.description}/>)}</div>
         : null}
         <button><Link to="/user/recipes/editform">Write a Review</Link></button></div>
-
     </div>
   );
 }

@@ -69,6 +69,7 @@ function App() {
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/recipes/new" element={<NewRecipeForm user={user}/>}/>
         <Route path="/recipes/:id" element={<Recipe />} />
+        <Route path='/reviews' element={<Reviews />} />
       </Routes>
     </div>
   );

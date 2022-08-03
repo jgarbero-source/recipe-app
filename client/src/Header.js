@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+// import '@fontsource/roboto/300.css';
+// import '@fontsource/roboto/400.css';
+// import '@fontsource/roboto/500.css';
+// import '@fontsource/roboto/700.css';
 import { Button, Typography } from "@mui/material";
 
 function Header({ user, onLogout }) {
@@ -36,7 +36,7 @@ function Header({ user, onLogout }) {
 
       <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700display=swap"
       />
 
       <br />

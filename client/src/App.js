@@ -5,9 +5,10 @@ import Recipes from "./Recipes.js";
 import Reviews from "./Reviews.js"
 import Review from "./Review.js"
 import { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, NavLink } from "react-router-dom";
 import NavBar from "./Navbar.js";
 import User from "./User.js";
+import UserNav from "./UserNav.js"
 import UserEditForm from "./UserEditForm.js";
 import UserRecipes from "./UserRecipes.js";
 import UserRecipeEditForm from "./UserRecipeEditForm.js";
@@ -49,16 +50,18 @@ function App() {
   return (
     <div className="App">
       <Header user={user} onLogout={handleLogout} />
-      <NavBar user={user} />
+      {user ? <UserNav/> : null}
+            <div><br/></div>
+      <NavBar/>
       <Routes>
-        <Route exact path="/" element={<><Recipes /><Reviews /></>}/>
+        <Route exact path="/" element={<Recipes />}/>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user" element={<User user={user} deleteUser={deleteUser} />} />
         <Route path="/user/edit" element={<UserEditForm user={user} />} />
         <Route path="/user/recipes" element={<UserRecipes user={user} />} />
-        <Route path="/user/recipes/:id" element={<UserRecipeEditForm/>}/>
-        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/user/recipes/:id" element={<UserRecipeEditForm />}/>
+        <Route path="/recipes" element={<Recipes/>} />
         <Route path="/recipes/:id" element={<Recipe />} />
       </Routes>
     </div>

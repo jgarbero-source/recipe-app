@@ -27,11 +27,7 @@ function NavBar({user}) {
                 Recipes
                 </Button>
             </NavLink>}
-            <NavLink className="link" to="/reviews">
-                <Button variant="contained">
-                Reviews
-                </Button>
-            </NavLink>
+            
         </nav>
     )
 }

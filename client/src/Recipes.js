@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Recipe from "./Recipe";
 
+
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
@@ -18,7 +19,9 @@ function Recipes() {
     <div>  
     {recipes.map(recipe => 
       <Recipe key={recipe.id} recipe = {recipe} 
-      edit={false} />)}
+      edit={false} />
+    )}
+      
   </div>
   );
 }

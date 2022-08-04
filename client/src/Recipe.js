@@ -66,7 +66,8 @@ function Recipe({user, recipe, edit}) {
         <br/>
         <button onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</button>
         </div>
-        {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} description = {review.description}/>)}</div>
+        {console.log(recipe)}
+        {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} review = {review} />)}</div>
         : null}
         {!edit ? <button><Link to="/user/recipes/editform">Write a Review</Link></button> : "Login or Create an Account to Post a Review for this Recipe"}
     </div>

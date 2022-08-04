@@ -10,13 +10,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: find_user, include: ['recipes', 'recipes.reviews', 'recipes.user']
+    render json: find_user, include: ['reviews', 'reviews.recipes', 'recipes', 'recipes.reviews', 'recipes.user']
   end
 
   #me
 
   def me
-    render json: @current_user
+    render json: @current_user #, include: ['reviews', 'reviews.recipes', 'recipes', 'recipes.reviews', 'recipes.user']
   end
 
   #index

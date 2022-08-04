@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Recipe from "./Recipe";
+import { Grid } from "@mui/material";
 
 
 function Recipes() {
@@ -18,12 +19,14 @@ function Recipes() {
   
   return (
     <div>  
-    {recipes.map(recipe => 
-      <Recipe key={recipe.id} recipe = {recipe} 
-      edit={false} />
-    )}
-      
-  </div>
+      <Grid container spacing={2}>
+        {recipes.map(recipe => 
+          <Grid item xs={6} key={recipe.id}>
+            <Recipe key={recipe.id} recipe = {recipe} edit={false} /> 
+          </Grid>
+        )}
+      </Grid>  
+    </div>
   );
 }
 

@@ -15,9 +15,12 @@ function Header({ user, onLogout }) {
   return (
     <header>
 
-      <Typography style={{color:"#00adb5"}} variant="h3">
+      {/* <Typography style={{color:"#00adb5"}} variant="h3">
         <Link to="/">{user ? user.username : "Sign In, You Bum"}</Link>
-      </Typography>
+      </Typography> */}
+      <br>
+      
+      </br>
       {user ? null: <Link to="signup">
       <Button variant="outlined" style={{color:"#000000"}}>Signup</Button>
       </Link>}
@@ -25,7 +28,7 @@ function Header({ user, onLogout }) {
       {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
-          <Button variant="outlined" onClick={handleLogout}>Logout
+          <Button variant="outlined" style={{color:"#000000"}} onClick={handleLogout}>Logout
           </Button>
         </div>
       ) : (
@@ -38,9 +41,6 @@ function Header({ user, onLogout }) {
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700display=swap"
       />
-
-      <br />
-      {user ? null: <Link to="signup">Signup</Link>}
 
     </header>
   );

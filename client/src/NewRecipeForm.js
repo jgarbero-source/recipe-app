@@ -86,7 +86,7 @@ function NewRecipeForm({user}) {
     const arr = formData.instructions
     arr.push(instrState);
     //console.log(arr)
-    setFormData({...formData, ["ingredients"]: arr })
+    setFormData({...formData, ["instructions"]: arr })
     setInstrState("")
     e.target.reset()
   }

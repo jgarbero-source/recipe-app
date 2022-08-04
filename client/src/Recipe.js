@@ -2,20 +2,21 @@ import {useState} from "react";
 import { Link } from "react-router-dom";
 import { Box, Card, CardActions, CardContent } from "@mui/material";
 import Review from "./Review"
+import { Button } from "@mui/material"
 
 function Recipe({user, recipe, edit}) {
   const [showInfo, setShowInfo] = useState(false)
   const [showReviews, setShowReviews] = useState(false)
   const { ingredients, instructions, genre, time, size, title, image, reviews} = recipe;
+  
+  const length = reviews.length
 
   function averageRating(){
-    if (reviews) {
     let sum = null;
     reviews.forEach((rev)=>{
       sum += rev.rating;
     })
-    return parseFloat(sum/reviews.length)}
-    return "No Reviews"
+    return `Average Rating of ${parseFloat(sum/length)}/5, with ${length} Review(s)`
   }
 
   function handleSubmitReview(){
@@ -31,15 +32,21 @@ function Recipe({user, recipe, edit}) {
 
   return (
   
-    <div>
+    <Card sx={{ minWidth: 275}} variant="outlined" style={{backgroundColor: "#1b9999", width:"100"}}>
+    <CardContent>
       {edit ? <div>
         <h2>{title}</h2> 
-        <button type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></button>
+        <Button variant="outlined" style={{color:"#000000"}} type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></Button>
         </div>
         :
         <h2>{title}</h2>}
-        <button onClick={handleDetails}>{showInfo ? "Hide Details": "Show Details"}</button>
+        <img src={image} alt = "dish"/>
+        <br>
+          
+        </br>
+        <Button variant="outlined" style={{color:"#000000"}} onClick={handleDetails}>{showInfo ? "Hide Details": "Show Details"}</Button>
         {showInfo ? <div>
+        <h4>by {recipe.user.username}</h4>
         <p>
           Cuisine: {genre}
         </p>
@@ -60,43 +67,22 @@ function Recipe({user, recipe, edit}) {
           {instructions.map((inst, index) => <li key ={index}>{inst}</li>)}
         </ol>
         </div> : null}
-        <img src={image} alt = "dish"/>
+        {/* <img src={image} alt = "dish"/> */}
         <div>
-        <div>Average Rating: {averageRating()}
-        <br/>
-        <button onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</button>
+
+        <div>{length>0 ? averageRating(): "No Reviews"}
+        </div><div>
+        <Button variant="outlined" style={{color:"#000000"}} onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</Button>
         </div>
-        {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} description = {review.description}/>)}</div>
+        {console.log(recipe)}
+        {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} review = {review} />)}</div>
+
         : null}
-        {!edit ? <button><Link to="/user/recipes/editform">Write a Review</Link></button> : "Login or Create an Account to Post a Review for this Recipe"}
+        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/recipes/editform">Write a Review</Link></Button> : null}
     </div>
-    </div>
+    </CardContent>
+  </Card>
   );
 }
 
 export default Recipe
-
-/* const bull = (
-    <Box
-      component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-      •
-    </Box>
-  );
-
-  return (
-    <Card sx={{ minWidth: 275}} variant="outlined" style={{backgroundColor: "#1b9999", width:"100"}}>
-    <CardContent>
-      <h1>{title}</h1>{edit ? <button type="button"><Link to="/user/recipes/editform" state={{recipe: {recipe}}}>Edit Recipe</Link></button>:null}
-      
-              <Box marginLeft={56} marginRight={56}>
-          <ol>
-            {instructions.map(inst => <li>{inst}</li>)}
-          </ol>
-        </Box>
-        <img src={image} alt = "dish"/>
-  </CardContent>
-  </Card>
-      
- */

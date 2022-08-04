@@ -18,11 +18,13 @@ function Reviews() {
       })}
       goGetEm();
   }, [])
+  console.log({reviews})
 
   return (
     <div>
     {reviews.map(review => 
-  <Review key={review.id} user_id={review.user_id} review={review} edit={false}/>
+  <Review key={review.id} review={review} edit={false}/>
+
   )}
     </div>
   );

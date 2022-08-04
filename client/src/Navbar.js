@@ -21,7 +21,11 @@ function NavBar({ user }) {
         <NavLink className="link" to="/recipes">
           <Button variant="contained">Peruse Recipes</Button>
         </NavLink>
-  );
-}
+        
+  )}
+  </nav>
+)}
+  
+
 
 export default NavBar;

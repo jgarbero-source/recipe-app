@@ -15,6 +15,7 @@ import UserRecipeEditForm from "./UserRecipeEditForm.js";
 import SignUp from './Signup.js';
 import NewRecipeForm from './NewRecipeForm.js';
 import UserReviewEditForm from './UserReviewEditForm.js';
+import NewReviewForm from './NewReviewForm.js';
 //import FeaturedRecipe from './FeaturedRecipe.js';
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
         <Route path="/recipes/:id" element={<Recipe />} />
         <Route path='/user/reviews' element={<UserReviews user={user}/>}/>
         <Route path="/user/reviews/:id" element={<UserReviewEditForm />}/>
+        <Route path="/user/reviews/new" element={<NewReviewForm />}/>
       </Routes>
     </div>
   );

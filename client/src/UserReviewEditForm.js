@@ -87,8 +87,7 @@ function UserReviewEditForm({review}) {
         <br/>
         <label>
           Review:
-          <input
-            type="text"
+          <textarea
             name="description"
             //placeholder={image}
             value={formData.description}

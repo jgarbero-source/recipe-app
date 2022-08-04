@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   #me
 
   def me
-    render json: @current_user #, include: ['reviews', 'reviews.recipes', 'recipes', 'recipes.reviews', 'recipes.user']
+    render json: @current_user
   end
 
   #index

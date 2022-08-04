@@ -76,7 +76,7 @@ function Recipe({recipe, edit}) {
         </div>
         {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} review = {review} />)}</div>
         : null}
-        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/recipes/editform">Write a Review</Link></Button> : null}
+        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/reviews/new" state={{recipe: {recipe}}}>Write a Review</Link></Button> : null}
     </div>
     </CardContent>
   </Card>

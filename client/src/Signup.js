@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import { FormControl, Input, Button, TextField } from '@mui/material';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -50,6 +51,56 @@ function SignUp() {
         <>
         <h2>Sign up</h2>
         <form onSubmit={handleSubmit}>
+        <FormControl>
+            <Input //can change to text area to get rid of warnings, but this looks better
+                placeholder="Username"
+                type='text'
+                name='username' 
+                value={username} 
+                onChange={handleChange}
+            />
+            <Input
+                placeholder="Password" 
+                type='password' 
+                name='password' 
+                value={password} 
+                onChange={handleChange}
+            />
+            <Input 
+                placeholder="Bio"
+                type="text"
+                minRows="3"
+                multiline={true}
+                name='bio' 
+                value={bio} 
+                onChange={handleChange}
+            />
+            {/* <Input
+                type="submit"
+                value="Signup!"
+            /> */}
+            <Button
+                type="submit"
+            >
+                Signup! 
+            </Button>
+        </FormControl>
+        </form>
+        {errors? errors.map(error => <div> {error[0]} {error[1]} </div>) : null }
+        </>
+    )
+}
+
+export default SignUp
+
+/*
+<FormControl>
+
+<Input>
+
+</FormControl>
+
+        <form onSubmit={handleSubmit}>
             <label>
                 Username
             </label>
@@ -67,9 +118,5 @@ function SignUp() {
 
             <input type="submit" value="Sign up!" />
         </form>
-        {errors? errors.map(error => <div> {error[0]} {error[1]} </div>) : null }
-        </>
-    )
-}
 
-export default SignUp
+*/

@@ -5,14 +5,23 @@ import Button from '@mui/material/Button'
 import CardContent from '@mui/material/CardContent';
 //import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Alert } from "@mui/material";
-// import { View, StyleSheet, Alert, Button } from 'react';
+import { Alert, Box } from "@mui/material";
+import { styled } from '@mui/styles';
+
 
 function User( { user, deleteUser } ) {
     const [errors, setErrors] = useState(false)
     const navigate = useNavigate()
     const params = useParams()
     const [alert, setAlert] = useState(false)
+
+    const MyButton = styled(Button)({
+        color: 'red'
+    })
+
+    const MySecondButton = styled(Button)({
+        color: 'green'
+    })
 
     function handleDelete() {
         fetch(`/users/${user.id}`, {
@@ -45,24 +54,27 @@ function User( { user, deleteUser } ) {
         userScreen =             
             <CardContent className="card-content">
                 <img src={avatar} alt="avatar pic"/>
-                <Typography className="card-desc" variant="subtitle1">{`${username}`}</Typography>
-                <Typography className="card-desc" variant="body1" color="text.secondary">{`${bio}`}</Typography>
-                <Button><Link to={`/user/edit`} className="button">Edit Profile</Link></Button>
-                <br/>
-                <Button><Link to={`/user/recipes`} className="button">My Recipes</Link></Button>
-                <Button><Link to={`/user/reviews`} className="button">My Reviews</Link></Button>
-                <br />
-                <Button onClick={deleteAlert}>Delete user</Button>
+                <Typography className="card-desc" variant="subtitle1">{`Username: ${username}`}</Typography>
+                <Typography className="card-desc" variant="body1" color="text.secondary">{`Bio: ${bio}`}</Typography>
+                <Box sx={{ p: 1 }}>
+                    <Link to={`/user/edit`} className="button">Edit Profile</Link>
+                </Box>
+                <Box sx={{ p: 1 }}>
+                    <Link to={`/user/recipes`} className="button">My Recipes</Link>
+                </Box>
+                <MyButton onClick={deleteAlert}>
+                        Delete user
+                </MyButton>
                 { alert? 
                 <Alert severity="warning"
                 action={
                     <div>
-                        <Button onClick={undoDelete}>
+                        <MySecondButton onClick={undoDelete}>
                             Keep my Profile
-                        </Button>
-                        <Button onClick={handleDelete}>
+                        </MySecondButton>
+                        <MyButton onClick={handleDelete}>
                             Delete my Profile
-                        </Button>
+                        </MyButton>
                     </div>
                 }
                 > 

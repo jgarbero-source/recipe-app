@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Typography } from "@mui/material"
+import { Typography, FormControl, Input, Button, TextField } from "@mui/material"
 import { useNavigate, Link } from "react-router-dom";
 
 function Login({ onLogin }) {
@@ -37,6 +37,36 @@ function Login({ onLogin }) {
     <div>
     <form onSubmit={handleSubmit}>
       <h3>Login With Username</h3>
+      <FormControl>
+      <Input 
+        placeholder="Username"
+        type="text"
+        id="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <Input
+        placeholder="Password" 
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Button type="submit">
+        Login
+      </Button>
+    </FormControl>
+      {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
+    </form>
+    <br />
+    <div>Don't have an account? <Link to="/signup">Sign Up</Link> to get started!</div>
+    </div>
+  );
+}
+
+export default Login;
+
+/*
       <label htmlFor="username">Username: </label>
       <input
         type="text"
@@ -52,12 +82,4 @@ function Login({ onLogin }) {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button type="submit">Login</button>
-      {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
-    </form>
-    <br />
-    <div>Don't have an account? <Link to="/signup">Sign Up</Link> to get started!</div>
-    </div>
-  );
-}
-
-export default Login;
+*/

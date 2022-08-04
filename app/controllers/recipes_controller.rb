@@ -27,6 +27,11 @@ class RecipesController < ApplicationController
     head :no_content, status: :ok 
   end
 
+  def random
+    recipe = Recipe.all.sample
+    render json: recipe, status: :ok
+  end
+
   private
   def recipe_params
     params.permit(:title, :genre, :time, :size, :image, :user_id, ingredients: [], instructions: [])

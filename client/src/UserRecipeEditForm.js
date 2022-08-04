@@ -8,22 +8,24 @@ function RecipeEditForm() {
   const [errors, setErrors] = useState([])
 
   useEffect(()=> {
-    let starterFormData = {
+    async function start(){
+      let starterFormData = {
       "title": location.state.recipe.recipe.title,
-      "ingredients": location.state.recipe.recipe.ingredients,
-      "instructions": location.state.recipe.recipe.instructions,
+      "ingredients": location.state.recipe.recipe.ingredients.toString(),
+      "instructions": location.state.recipe.recipe.instructions.toString(),
       "genre": location.state.recipe.recipe.genre,
       "time": location.state.recipe.recipe.time,
       "size": location.state.recipe.recipe.size,
       "image": location.state.recipe.recipe.image
     };
     console.log(starterFormData)
-    setFormData(starterFormData)
-  }, [location.state.recipe.recipe.title, location.state.recipe.recipe.ingredients, location.state.recipe.recipe.instructions, location.state.recipe.recipe.genre, location.state.recipe.recipe.time, location.state.recipe.recipe.size, location.state.recipe.recipe.image])
+    setFormData(starterFormData)}
+    start()
+  }, [])
 
 
-  const ingredients = location.state.recipe.recipe.ingredients;
-  const instructions = location.state.recipe.recipe.instructions;
+  const ingredients = location.state.recipe.recipe.ingredients.toString();
+  const instructions = location.state.recipe.recipe.instructions.toString();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -50,8 +52,8 @@ function RecipeEditForm() {
 
   function readyUpdateRecipe(){
     let toSend = formData
-    //toSend["ingredients"] = toSend.ingredients.split(/[.,]+/)
-    //toSend["instructions"] = toSend.instructions.split(/[.,]+/)
+    toSend["ingredients"] = toSend.ingredients.split(/[.,]+/)
+    toSend["instructions"] = toSend.instructions.split(/[.,]+/)
     console.log(toSend)
     return toSend
   }
@@ -119,16 +121,16 @@ function RecipeEditForm() {
         <label>
           <textarea
             name="ingredients"
-            placeholder={ingredients.toString()}
-            value={formData.ingredients.toString()}
+            placeholder={ingredients}
+            value={formData.ingredients}
             onChange={handleArrayChange}
           /></label>
         <br/>
         Instructions:
         <label><textarea
             name="instructions"
-            placeholder={instructions.toString()}
-            value={formData.instructions.toString()}
+            placeholder={instructions}
+            value={formData.instructions}
             onChange={handleArrayChange}
           /></label>
         <br/>

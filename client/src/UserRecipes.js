@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 import Recipe from "./Recipe";
 
 function UserRecipes({ user }) {
@@ -17,7 +18,7 @@ function UserRecipes({ user }) {
 
   return (
     <div>
-      <button><Link to='/recipes/new'>Create a New Recipe</Link></button>
+      <Button><Link to='/recipes/new'>Create a New Recipe</Link></Button>
       {(recipes.length>0)? <div>
       {recipes.map((recipe) => (
         <Recipe key={recipe.id} recipe={recipe} edit = {true}/>

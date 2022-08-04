@@ -3,11 +3,11 @@ class RecipesController < ApplicationController
   # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   def index
-    render json: Recipe.all, include: ['reviews', 'reviews.user'], status: :ok
+    render json: Recipe.all, include: ['user', 'reviews', 'reviews.user'], status: :ok
   end
 
   def show
-    render json: find_recipe, include: ['reviews', 'reviews.user'], status: :found
+    render json: find_recipe, include: ['user', 'reviews', 'reviews.user'], status: :found
   end
 
   def update

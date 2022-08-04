@@ -2,8 +2,8 @@ import Header from "./Header.js";
 import Login from "./Login.js";
 import Recipe from "./Recipe.js";
 import Recipes from "./Recipes.js";
-import Reviews from "./Reviews.js"
-import Review from "./Review.js"
+import UserReviews from "./UserReviews.js"
+//import Review from "./Review.js"
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate, NavLink } from "react-router-dom";
 import NavBar from "./Navbar.js";
@@ -14,7 +14,9 @@ import UserRecipes from "./UserRecipes.js";
 import UserRecipeEditForm from "./UserRecipeEditForm.js";
 import SignUp from './Signup.js';
 import NewRecipeForm from './NewRecipeForm.js';
-import FeaturedRecipe from './FeaturedRecipe.js';
+import UserReviewEditForm from './UserReviewEditForm.js';
+import NewReviewForm from './NewReviewForm.js';
+//import FeaturedRecipe from './FeaturedRecipe.js';
 
 function App() {
   const navigate = useNavigate();
@@ -60,6 +62,7 @@ function App() {
             <div><br/></div>
       <NavBar/>
       <Routes>
+        {/* <Route exact path="/" element={<FeaturedRecipe />}/> */}
         <Route exact path="/" element={<Recipes />}/>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
@@ -70,7 +73,9 @@ function App() {
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/new" element={<NewRecipeForm user={user}/>}/>
         <Route path="/recipes/:id" element={<Recipe />} />
-        <Route path='/reviews' element={<Reviews />} />
+        <Route path='/user/reviews' element={<UserReviews user={user}/>}/>
+        <Route path="/user/reviews/:id" element={<UserReviewEditForm />}/>
+        <Route path="/user/reviews/new" element={<NewReviewForm />}/>
       </Routes>
     </div>
   );

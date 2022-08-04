@@ -4,7 +4,7 @@ import { Box, Card, CardActions, CardContent } from "@mui/material";
 import Review from "./Review"
 import { Button } from "@mui/material"
 
-function Recipe({user, recipe, edit}) {
+function Recipe({recipe, edit}) {
   const [showInfo, setShowInfo] = useState(false)
   const [showReviews, setShowReviews] = useState(false)
   const { ingredients, instructions, genre, time, size, title, image, reviews} = recipe;
@@ -74,11 +74,9 @@ function Recipe({user, recipe, edit}) {
         </div><div>
         <Button variant="outlined" style={{color:"#000000"}} onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</Button>
         </div>
-        {console.log(recipe)}
         {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} review = {review} />)}</div>
-
         : null}
-        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/recipes/editform">Write a Review</Link></Button> : null}
+        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/reviews/new" state={{recipe: {recipe}}}>Write a Review</Link></Button> : null}
     </div>
     </CardContent>
   </Card>

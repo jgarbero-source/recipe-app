@@ -21,11 +21,6 @@ function NavBar({ user }) {
         <NavLink className="link" to="/recipes">
           <Button variant="contained">Peruse Recipes</Button>
         </NavLink>
-      )}
-      <NavLink className="link" to="/reviews">
-        <Button variant="contained">Peruse Reviews</Button>
-      </NavLink>
-    </nav>
   );
 }
 

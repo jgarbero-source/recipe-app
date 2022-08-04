@@ -3,11 +3,11 @@ class RecipesController < ApplicationController
   # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   def index
-    render json: Recipe.all, status: :ok
+    render json: Recipe.all, include: ['reviews', 'reviews.user'], status: :ok
   end
 
   def show
-    render json: find_recipe, status: :found
+    render json: find_recipe, include: ['reviews', 'reviews.user'], status: :found
   end
 
   def update
@@ -25,6 +25,11 @@ class RecipesController < ApplicationController
     recipe.reviews.destroy_all
     recipe.destroy
     head :no_content, status: :ok 
+  end
+
+  def random
+    recipe = Recipe.all.sample
+    render json: recipe, status: :ok
   end
 
   private

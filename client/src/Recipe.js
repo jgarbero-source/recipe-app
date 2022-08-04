@@ -57,7 +57,7 @@ function Recipe({recipe, edit}) {
           Serving Size: {size}
         </p>
         <p>Ingredients:</p>
-        <Box marginLeft={65} marginRight={56}>
+        <Box marginLeft={25} marginRight={25}>
           <ul>
             {ingredients.map(ing => <li>{ing}</li>)}
           </ul>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: find_user, include: ['recipes', 'recipes.reviews']
+    render json: find_user, include: ['recipes', 'recipes.reviews', 'recipes.user']
   end
 
   #me

@@ -9,11 +9,11 @@ function Review({review}) {
   // }
   // console.log(reviewMadeWhen())
 
-  console.log(review)
-//  const {user, recipe, rating, description, title} = review
+  //console.log(review)
+  //  const {user, recipe, rating, description, title} = review
   return (
     <>
-    <h2>Written by: {review.user.username}</h2>
+    {/* <h2>Written by: {review.user.username}</h2> */}
       <p>Rating: {review.rating}</p>
       <p>
         {review.description}

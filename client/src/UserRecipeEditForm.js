@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-function RecipeEditForm() {
+function UserRecipeEditForm() {
   const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({});
@@ -176,4 +176,4 @@ function RecipeEditForm() {
   );
 }
 
-export default RecipeEditForm;
+export default UserRecipeEditForm;

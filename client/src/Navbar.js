@@ -8,7 +8,7 @@ function NavBar({ user }) {
       <NavLink className="link" end to="/">
         <Button variant="contained">Home</Button>
       </NavLink>
-      {user ? (
+      {/* {user ? (
         <div>
           <NavLink className="link" to="/user/recipes">
             <Button variant="contained">My Recipes</Button>
@@ -17,11 +17,11 @@ function NavBar({ user }) {
             <Button variant="contained">User</Button>
           </NavLink>
         </div>
-      ) : (
+      ) : ( */}
         <NavLink className="link" to="/recipes">
           <Button variant="contained">Peruse Recipes</Button>
         </NavLink>        
-  )}
+  {/* )} */}
   </nav>
 )}
   

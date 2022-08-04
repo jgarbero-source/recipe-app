@@ -45,10 +45,13 @@ function User( { user, deleteUser } ) {
         userScreen =             
             <CardContent className="card-content">
                 <img src={avatar} alt="avatar pic"/>
-                <Typography className="card-desc" variant="subtitle1">{`Username: ${username}`}</Typography>
-                <Typography className="card-desc" variant="body1" color="text.secondary">{`Bio: ${bio}`}</Typography>
-                <Link to={`/user/edit`} className="button">Edit Profile</Link>
-                <Link to={`/user/recipes`} className="button">My Recipes</Link>
+                <Typography className="card-desc" variant="subtitle1">{`${username}`}</Typography>
+                <Typography className="card-desc" variant="body1" color="text.secondary">{`${bio}`}</Typography>
+                <Button><Link to={`/user/edit`} className="button">Edit Profile</Link></Button>
+                <br/>
+                <Button><Link to={`/user/recipes`} className="button">My Recipes</Link></Button>
+                <Button><Link to={`/user/reviews`} className="button">My Reviews</Link></Button>
+                <br />
                 <Button onClick={deleteAlert}>Delete user</Button>
                 { alert? 
                 <Alert severity="warning"

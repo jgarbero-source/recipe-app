@@ -18,8 +18,8 @@ function NavBar({ user }) {
           </NavLink>
         </div>
       ) : ( */}
-        <NavLink className="link" to="/recipes">
-          <Button variant="contained">Peruse Recipes</Button>
+        <NavLink className="link" to="/recipes" state={{}}>
+          <Button variant="contained">All Recipes</Button>
         </NavLink>        
   {/* )} */}
   </nav>

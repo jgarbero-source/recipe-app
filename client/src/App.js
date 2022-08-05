@@ -75,7 +75,7 @@ function App() {
         <Route path="/recipes/:id" element={<Recipe />} />
         <Route path='/user/reviews' element={<UserReviews user={user}/>}/>
         <Route path="/user/reviews/:id" element={<UserReviewEditForm />}/>
-        <Route path="/user/reviews/new" element={<NewReviewForm />}/>
+        <Route path="/user/reviews/new" element={<NewReviewForm user={user}/>}/>
       </Routes>
     </div>
   );

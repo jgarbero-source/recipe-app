@@ -57,13 +57,13 @@ function User( { user, deleteUser } ) {
                 <Typography className="card-desc" variant="subtitle1">{`Username: ${username}`}</Typography>
                 <Typography className="card-desc" variant="body1" color="text.secondary">{`Bio: ${bio}`}</Typography>
                 <Box sx={{ p: 1 }}>
-                    <Link to={`/user/edit`} className="button">Edit Profile</Link>
+                    <Button><Link to={`/user/edit`} className="button">Edit Profile</Link></Button>
                 </Box>
                 <Box sx={{ p: 1 }}>
-                    <Link to={`/user/recipes`} className="button">My Recipes</Link>
+                <Button><Link to={`/user/recipes`} className="button">My Recipes</Link></Button>
                 </Box>
                 <Box sx={{ p: 1 }}>
-                    <Link to={`/user/reviews`} className="button">My Reviews</Link>
+                <Button><Link to={`/user/reviews`} className="button">My Reviews</Link></Button>
                 </Box>
                 <MyButton onClick={deleteAlert}>
                         Delete user

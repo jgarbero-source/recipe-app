@@ -1,26 +1,25 @@
-function Review({review}) {
-  // const current = new Date();
-  // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-  // console.log(date)
-  // function reviewMadeWhen(){
-  //   const current = new Date()
-  //   const month = current.getMonth() +1
-  //   return month
-  // }
-  // console.log(reviewMadeWhen())
+import { useState, useEffect} from 'react'
 
-  //console.log(review)
-  //  const {user, recipe, rating, description, title} = review
+function Review({review}) {
+  const [thisUser, setThisUser] = useState({})
+
+  useEffect(()=>{
+    fetch(`/users/${review.user_id}`)
+    .then(resp => resp.json())
+    .then(r => setThisUser(r))
+  },[])
+
   return (
-    <>
-    {/* <h2>Written by: {review.user.username}</h2> */}
-      <p>Rating: {review.rating}</p>
+    <div>
+    <div>
+      <p>Rating: {review.rating}/5</p>
       <p>
         {review.description}
       </p> 
-
-    </>
-      
+    </div>
+    {<p>Written by: {thisUser.username}</p>}
+    <br/>
+    </div>  
   )
 }
 

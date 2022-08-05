@@ -4,7 +4,7 @@ import { Box, Card, CardActions, CardContent } from "@mui/material";
 import Review from "./Review"
 import { Button } from "@mui/material"
 
-function Recipe({recipe, edit}) {
+function Recipe({recipe, edit, user}) {
   const [showInfo, setShowInfo] = useState(false)
   const [showReviews, setShowReviews] = useState(false)
   const { ingredients, instructions, genre, time, size, title, image, reviews} = recipe;
@@ -41,9 +41,8 @@ function Recipe({recipe, edit}) {
         :
         <h2>{title}</h2>}
         <img src={image} alt = "dish"/>
-        <br>
-          
-        </br>
+        <br/>
+        <br />
         <Button variant="outlined" style={{color:"#000000"}} onClick={handleDetails}>{showInfo ? "Hide Details": "Show Details"}</Button>
         {showInfo ? <div>
         <h4>by {recipe.user.username}</h4>
@@ -67,16 +66,16 @@ function Recipe({recipe, edit}) {
           {instructions.map((inst, index) => <li key ={index}>{inst}</li>)}
         </ol>
         </div> : null}
-        {/* <img src={image} alt = "dish"/> */}
+        <br />
+        <br />
         <div>
-
         <div>{length>0 ? averageRating(): "No Reviews"}
         </div><div>
-        <Button variant="outlined" style={{color:"#000000"}} onClick={handleReviews}>{showReviews ? "Hide Reviews": "Reviews"}</Button>
+        {length>0 ?<Button variant="outlined" style={{color:"#000000"}} onClick={handleReviews}>{showReviews? "Hide Reviews": "Reviews"}</Button> : null}
         </div>
         {showReviews ? <div>{recipe.reviews.map(review => <Review key = {review.id} review = {review} />)}</div>
         : null}
-        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/reviews/new" state={{recipe: {recipe}}}>Write a Review</Link></Button> : null}
+        {!edit ? <Button variant="outlined" style={{color:"#000000"}}><Link to="/user/reviews/new" state={{recipe: {recipe}, user: {user}}}>Write a Review</Link></Button> : null}
     </div>
     </CardContent>
   </Card>

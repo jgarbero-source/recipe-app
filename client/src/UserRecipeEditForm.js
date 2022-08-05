@@ -55,6 +55,8 @@ function UserRecipeEditForm() {
     toSend["ingredients"] = toSend.ingredients.split(/[.,]+/)
     toSend["instructions"] = toSend.instructions.split(/[.,]+/)
     console.log(toSend)
+    toSend["ingredients"] = toSend.ingredients.filter(entry => entry.trim() != '')
+    toSend["instructions"] = toSend.instructions.filter(entry => entry.trim() != '')
     return toSend
   }
 

@@ -3,7 +3,7 @@ import Recipe from "./Recipe";
 import { Grid } from "@mui/material";
 
 
-function Recipes() {
+function Recipes({user}) {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Recipes() {
       <Grid container spacing={2}>
         {recipes.map(recipe => 
           <Grid item xs={6} key={recipe.id}>
-            <Recipe key={recipe.id} recipe = {recipe} edit={false} /> 
+            <Recipe key={recipe.id} recipe = {recipe} edit={false} user={user}/> 
           </Grid>
         )}
       </Grid>  

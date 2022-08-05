@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Alert } from "@mui/material";
+
 function NewReviewForm({ recipe, user }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -12,32 +12,22 @@ function NewReviewForm({ recipe, user }) {
       if(!user){
       navigate("/");
       alert("Please log in or create an account to review recipes.")}
-      let starterFormData = {
-        user_id: user.id,
+      else{
+        if(location){
+        if (location.state.user.user.id === location.state.recipe.recipe.user.id) {
+          navigate("/");
+          alert("Hey silly, you can't review your own recipe. That's called BIAS.")
+        }}
+        let starterFormData = {
+        user_id: location.state.user.user.id,
         recipe_id: location.state.recipe.recipe.id,
         rating: 1,
         description: "",
       };
-      setFormData(starterFormData);
+      setFormData(starterFormData)}
     }
     
     start();
-    
-    // fetch("/me").then((response) => {
-    //   if (response.ok) {
-    //     response.json().then((client) => {
-    //       console.log(client);
-    //       if (client != null) {
-    //         console.log("did it")
-    //       } else {
-    //         navigate("/");
-    //         alert("Please log in or create an account to review recipes.");
-    //       }
-    //     });
-    //   } else {
-    //     console.log("We're not rendering nothing pal");
-    //   }
-    // });
   }, []);
 
   function handleChange(e) {
@@ -49,11 +39,28 @@ function NewReviewForm({ recipe, user }) {
   function handleSubmit(e) {
     e.preventDefault()
     console.log(formData)
-    navigate('/user/reviews')
+    fetch('/reviews', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify(formData)
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((review) => {
+          console.log(review);
+          navigate(`/user/reviews`);
+        });
+      } else {
+        r.json().then((json) => setErrors(Object.entries(json.errors)));
+      }
+    });
   }
 
   return (
     <div>
+      {errors ? errors.map((e) => <div key={e[0]}>{e[1]}</div>) : null}
       <form onSubmit={handleSubmit}>
         <label>Rating (out of 5)</label>
         <input

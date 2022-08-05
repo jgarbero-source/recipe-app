@@ -58,6 +58,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Dishes to Fulfill Your Wishes</h1>
       <Header user={user} onLogout={handleLogout} />
       {user ? <UserNav/> : null}
             <div><br/></div>

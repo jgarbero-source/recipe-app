@@ -63,7 +63,7 @@ function App() {
       <NavBar/>
       <Routes>
         {/* <Route exact path="/" element={<FeaturedRecipe />}/> */}
-        <Route exact path="/" element={<Recipes />}/>
+        <Route exact path="/" element={<Recipes user = {user}/>}/>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user" element={<User user={user} deleteUser={deleteUser} />} />

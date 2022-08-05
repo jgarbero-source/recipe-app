@@ -3,12 +3,20 @@ import UserRev from "./UserRev.js";
 
 function UserReviews({ user }) {
   const [reviews, setReviews] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     fetch(`/users/${user.id}`).then((resp) => {
       if (resp.ok) {
         resp.json().then((r) => {
           setReviews(r.reviews);
+        });
+      }
+    });
+    fetch('/recipes').then((rec) => {
+      if (rec.ok) {
+        rec.json().then((r) => {
+          setRecipes(r);
         });
       }
     });
@@ -19,7 +27,7 @@ function UserReviews({ user }) {
       {reviews.length > 0 ? (
         <div>
           {reviews.map((review) => (
-            <UserRev key={review.id} review={review}/>
+            <UserRev key={review.id} review={review} recipes = {recipes}/>
           ))}
         </div>
       ) : (

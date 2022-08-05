@@ -42,10 +42,9 @@ function Recipe({recipe, edit, user}) {
         <h2>{title}</h2>}
         <img src={image} alt = "dish"/>
         <br/>
-        <br />
+        <h4>by {recipe.user.username}</h4>
         <Button variant="outlined" style={{color:"#000000"}} onClick={handleDetails}>{showInfo ? "Hide Details": "Show Details"}</Button>
         {showInfo ? <div>
-        <h4>by {recipe.user.username}</h4>
         <p>
           Cuisine: {genre}
         </p>

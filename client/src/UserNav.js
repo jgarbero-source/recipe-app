@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 
-function UserNav() {
+function UserNav({user}) {
   return (
     <nav className="nav-bar">
       <NavLink className="link" to="/user">
@@ -15,7 +15,7 @@ function UserNav() {
           My Recipes
         </Button>
       </NavLink>
-      <NavLink className="link" to="/user/reviews">
+      <NavLink className="link" to="/user/reviews" state={{user: {user}}}>
         <Button variant="outlined" style={{ color: "#000000" }}>
           My Reviews
         </Button>

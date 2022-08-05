@@ -23,7 +23,6 @@ function UserRecipeEditForm() {
     start()
   }, [])
 
-
   const ingredients = location.state.recipe.recipe.ingredients.toString();
   const instructions = location.state.recipe.recipe.instructions.toString();
 

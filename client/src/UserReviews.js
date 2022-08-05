@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
+import {useLocation} from 'react-router-dom';
 import UserRev from "./UserRev.js";
 
 function UserReviews({ user }) {
   const [reviews, setReviews] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [userA, setUserA] = useState(user);
+  const location = useLocation();
 
   useEffect(() => {
-    fetch(`/users/${user.id}`).then((resp) => {
+    // if(location.state){
+    //   setUserA(location.state.user.user)
+    // }
+    fetch(`/users/${userA.id}`).then((resp) => {
       if (resp.ok) {
         resp.json().then((r) => {
           setReviews(r.reviews);
@@ -27,7 +33,7 @@ function UserReviews({ user }) {
       {reviews.length > 0 ? (
         <div>
           {reviews.map((review) => (
-            <UserRev key={review.id} review={review} recipes = {recipes}/>
+            <UserRev key={review.id} review={review} recipes = {recipes} user={userA}/>
           ))}
         </div>
       ) : (

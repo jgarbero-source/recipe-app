@@ -12,6 +12,7 @@ function UserReviews({ user }) {
     // if(location.state){
     //   setUserA(location.state.user.user)
     // }
+    setUserA(user)
     fetch(`/users/${userA.id}`).then((resp) => {
       if (resp.ok) {
         resp.json().then((r) => {
@@ -41,7 +42,7 @@ function UserReviews({ user }) {
           You have no reviews! Go peruse the recipes and create one there.
         </h3>
       )}
-      {console.log(reviews)}
+      {console.log(recipes)}
     </div>
   );
 }

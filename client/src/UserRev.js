@@ -2,22 +2,29 @@ import {Link} from 'react-router-dom'
 import { useState, useEffect} from 'react'
 
 function UserRev({ review, recipes, user}) {
-  const [thisRec, setThisRec] = useState({})
+  const [thisRec, setThisRec] = useState(null)
+  const [theserecipes, setTheseRecipes] = useState(recipes)
+  const [thisreview, setThisReview] = useState(review)
 
   useEffect(()=>{
+    setTheseRecipes(recipes)
+    setThisReview(review)
     console.log(recipes)
-    console.log(user)
-    recipes.forEach(rec => {
-      if(rec.id === review.recipe_id){
+    theserecipes.forEach(rec => {
+      if(rec.id === thisreview.recipe_id){
+        console.log(thisreview.recipe_id)
         setThisRec(rec)
+        console.log(thisRec)
       }
-    });
+    })
   },[])
 
   return (
     <div><div>
-      <img src = {thisRec.image}/>
-      {<p>{thisRec.title} "by" {user.username}</p>}
+      {thisRec? <div>
+        <img src = {thisRec.image}/>
+        <p>{thisRec.title} "by" {thisRec.user.username}</p>
+        </div> : null}
       <p>Your Rating: {review.rating}/5</p>
       <p>Your Review: {review.description}</p>
     </div>

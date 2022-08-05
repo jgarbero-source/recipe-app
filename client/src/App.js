@@ -16,12 +16,13 @@ import SignUp from './Signup.js';
 import NewRecipeForm from './NewRecipeForm.js';
 import UserReviewEditForm from './UserReviewEditForm.js';
 import NewReviewForm from './NewReviewForm.js';
-//import FeaturedRecipe from './FeaturedRecipe.js';
+import RecipesHome from './RecipesHome.js';
 
 function App() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -62,15 +63,14 @@ function App() {
             <div><br/></div>
       <NavBar/>
       <Routes>
-        {/* <Route exact path="/" element={<FeaturedRecipe />}/> */}
-        <Route exact path="/" element={<Recipes user = {user}/>}/>
+        <Route exact path="/" element={<RecipesHome user = {user} />}/>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user" element={<User user={user} deleteUser={deleteUser} />} />
         <Route path="/user/edit" element={<UserEditForm user={user} updateUser={updateUser} />} />
         <Route path="/user/recipes" element={<UserRecipes user={user} />} />
         <Route path="/user/recipes/:id" element={<UserRecipeEditForm />}/>
-        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipes" element={<Recipes user = {user} />} />
         <Route path="/recipes/new" element={<NewRecipeForm user={user}/>}/>
         <Route path="/recipes/:id" element={<Recipe />} />
         <Route path='/user/reviews' element={<UserReviews user={user}/>}/>

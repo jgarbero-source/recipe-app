@@ -2,7 +2,7 @@
 
 ## Description
 
-This application allows the client to create a user, login with that user's information (username and password), and do the following: browse among recipes, create a recipe, delete their own recipes, edit recipes, view reviews of those recipes, create a review, edit a review, delete reviews of recipes. The user can also edit and delete their own profile. You can find the deployed website [https://jjmv-recipe-app.herokuapp.com/](here). 
+This application allows the client to create a user, login with that user's information (username and password), and do the following: browse among recipes, create a recipe, delete their own recipes, edit recipes, view reviews of those recipes, create a review, edit a review, delete reviews of recipes. The user can also edit and delete their own profile. You can find the deployed website [here](https://jjmv-recipe-app.herokuapp.com/). 
 
 ## Requirements
 

@@ -16,112 +16,41 @@ don't already have them.
 
 ## Setup
 
-Start by **cloning** (not forking) the project template repository and removing
-the remote:
+1. Fork and clone this repository.
+2. Install gems `bundle install`.
+3. Install dependencies `npm install --prefix client`. 
+4. Run the backend with `rails s`
+5. Run the frontend with `npm start --prefix client`.
 
-```console
-$ git clone git@github.com:learn-co-curriculum/project-template-react-rails-api.git your-project-name
-$ cd your-project-name
-$ git remote rm origin
-```
+## Features
 
-Then, [create a new remote repository][create repo] on GitHub. Head to
-[github.com](https://github.com) and click the **+** icon in the top-right
-corner and follow the steps to create a new repository. **Important**: don't
-check any of the options such as 'Add a README file', 'Add a .gitignore file',
-etc — since you're importing an existing repository, creating any of those files
-on GitHub will cause issues.
+### CRUD Operations
 
-[create repo]: https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line#adding-a-project-to-github-without-github-cli
+- The user can create an account and login to that account.
+- The user can create their own recipes and reviews, as well as edit and delete them. 
+- The user can only create, edit, and delete their own recipes and reviews.
 
-If you're working with a partner,
-[add them as a collaborator][add collaborator] on GitHub. From your repo on
-GitHub, go to Settings > Manage Access > Invite a collaborator and enter your
-partner's username. Once your partner has access, they should git **clone** (not
-fork) the repository.
+### React and React Router
 
-[add collaborator]: https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository
+- Organized code structure by separating components into folders
+- Organized web page by separating components through the NavBar and the user NavBar
+- Utilize inverse data flow by sending props between parent and child components
 
-Finally, connect the GitHub remote repository to your local repository and push
-up your code:
+### Ruby on Rails and PostgreSQL
 
-```console
-$ git remote add origin git@github.com:your-username/your-project-name.git
-$ git push -u origin main
-```
+- Established authentication and authorization for each user
+- Utilized controllers to bring data from the PostgreSQL database to the frontend
+- Utlized serializers to show and organize data on the frontend easily
 
-When you're ready to start building your project, run:
+## Tech Stack
 
-```sh
-bundle install
-rails db:create
-npm install --prefix client
-```
-
-You can use the following commands to run the application:
-
-- `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
-- `npm start --prefix client`: run the frontend on
-  [http://localhost:4000](http://localhost:4000)
-
-Make sure to also update this README to include documentation about
-your project. Here's a list of some [awesome readmes][] for inspiration.
-
-[awesome readmes]: https://github.com/matiassingers/awesome-readme
-
-## Deploying
-
-This application has all the starter code needed to help you deploy your
-application to Heroku. It's recommended to deploy your project early and push up
-changes often to ensure that your code works equally well in production and
-development environments.
-
-If you've already set up your environment to deploy to Heroku, you can run the
-commands below to deploy your application. If not, make sure to check out the
-Environment Setup section below.
-
-To deploy, first log in to your Heroku account using the Heroku CLI:
-
-```sh
-heroku login
-```
-
-Create the new Heroku app:
-
-```sh
-heroku create my-app-name
-```
-
-Add the buildpacks for Heroku to build the React app on Node and run the Rails
-app on Ruby:
-
-```sh
-heroku buildpacks:add heroku/nodejs --index 1
-heroku buildpacks:add heroku/ruby --index 2
-```
-
-To deploy, commit your code and push the changes to Heroku:
-
-```sh
-git add .
-git commit -m 'Commit message'
-git push heroku main
-```
-
-> Note: depending on your Git configuration, your default branch might be named
-> `master` or `main`. You can verify which by running
-> `git branch --show-current`. If it's `master`, you'll need to run
-> `git push heroku master` instead.
-
-Any time you have changes to deploy, just make sure your changes are committed
-on the main branch of your repo, and push those changes to Heroku to deploy
-them.
-
-You can view your deployed app with:
-
-```sh
-heroku open
-```
+- React.js
+- React Router
+- Ruby on Rails
+- ActiveRecord
+- PostreSQL
+- HTML/CSS
+- Material UI
 
 ## Environment Setup
 
